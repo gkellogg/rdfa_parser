@@ -1,0 +1,15 @@
+=== 0.0.1 2009-09-26
+
+* Previous versions based on original work by Ben Adida.
+* Spec tests use Redland/Rasqal to check results.
+  * Version 0.9.16 of Rasqal does not support UNION, so those tests are compared against NTriples
+* Passes most XHTML+RDFa tests. Of those that don't pass:
+  * NTriple BNode production differences.
+  * XMLLiteral attribute/namespace ordering differences (requires deep XML compare, not in Nokogiri).
+* Unexplained failures:
+  * Test0102: XMLLiteral with explicit namespace and xml:lang; not overwriting existing langs
+  * Test0103: XMLLiteral with explicit namespace; not overwriting local namespaces
+  * Test0105: inner @rel neither CURIE nor LinkType
+  * Test0106: chaining with empty value in inner @rel
+  * Test0121: "[]" is a valid safe CURIE
+    * RDFa parser seems to be working correctly, but Nokogiri parses embedded <p> incorrectly

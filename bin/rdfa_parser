@@ -1,0 +1,53 @@
+#!/usr/bin/env ruby -s
+require 'rubygems'
+require File.expand_path(File.dirname(__FILE__) + "/../lib/rdfa_parser")
+require 'getoptlong'
+
+class Parse
+  def parse(file, base_uri)
+    parser = RdfaParser::RdfaParser.new(File.read(file), base_uri)
+
+    puts parser.debug.join("\n\t") if $verbose
+    puts parser.graph.to_ntriples
+  rescue RdfaParser::ParserException => e
+    puts "Parse failure"
+    if $verbose
+      msg = [e.message]
+      msg += parser.debug rescue []
+      msg += [""]
+      puts msg.join("\n\t")
+      puts parser.graph.to_ntriples rescue nil
+    end
+    #raise
+  rescue Exception => e
+    puts "Parser fault"
+    msg = [e.message]
+    msg += parser.debug rescue []
+    msg += [""]
+    puts msg.join("\n\t")
+    puts parser.graph.to_ntriples rescue nil
+    raise
+  end
+end
+
+$verbose = false
+base_uri  = "http://example.com"
+
+opts = GetoptLong.new(
+  ["--verbose", GetoptLong::NO_ARGUMENT],
+  ["--debug", GetoptLong::NO_ARGUMENT],
+  ["--uri", GetoptLong::REQUIRED_ARGUMENT]
+)
+opts.each do |opt, arg|
+  case opt
+  when '--verbose' then $verbose = true
+  when '--debug' then $DEBUG = true
+  when '--uri' then base_uri = arg
+  end
+end
+
+x = Parse.new
+ARGV.each do |test_file|
+  x.parse(test_file, base_uri)
+end
+
