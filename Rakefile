@@ -18,6 +18,9 @@ $hoe = Hoe.spec 'rdfa_parser' do
     ['addressable', '>= 2.0.0'],
     ['nokogiri',    '>= 1.3.3']
   ]
+  self.extra_dev_deps       = [
+    ['activesupport', '>= 2.3.0'],
+  ]
   self.extra_rdoc_files     = %w(README.rdoc)
   self.readme_file          = "README.rdoc"
 

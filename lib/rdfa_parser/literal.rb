@@ -72,6 +72,7 @@ module RdfaParser
       # XMLLiteral and String values are encoding using C-style strings with
       # non-printable ASCII characters escaped.
       def format_as_n3(content, lang)
+        content = c_style(content.to_s)
         quoted_content = should_quote? ? "\"#{content}\"" : content
         "#{quoted_content}^^<#{value}>#{lang ? "@#{lang}" : ""}"
       end
@@ -93,7 +94,7 @@ module RdfaParser
         false
       end
 
-      private
+      #private
       # "Borrowed" from JSON utf8_to_json
       MAP = {
         "\x0" => '\u0000',
@@ -206,7 +207,13 @@ module RdfaParser
       # Compare XMLLiterals
       # FIXME: Nokogiri doesn't do a deep compare of elements
       def compare_contents(a, b, same_lang)
-        true
+        begin
+          a_hash = ActiveSupport::XmlMini.parse("<foo>#{a}</foo>")
+          b_hash = ActiveSupport::XmlMini.parse("<foo>#{b}</foo>")
+          a_hash == b_hash
+        rescue
+          super
+        end
       end
       
       def format_as_n3(content, lang)

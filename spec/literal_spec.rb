@@ -60,22 +60,34 @@ describe "Literals" do
     dtf.should_not == dtg
   end
   
-  it "should return valid N3/NTriples format strings" do
-    f = Literal.untyped("tom")
-    f.to_n3.should == "\"tom\""
-    f.to_ntriples.should == f.to_n3
+  describe "valid N3/NTriples format strings" do
+    it "should return quoted string" do
+      f = Literal.untyped("tom")
+      f.to_n3.should == "\"tom\""
+      f.to_ntriples.should == f.to_n3
+    end
     
-    g = Literal.untyped("tom", "en")
-    g.to_n3.should == "\"tom\"@en"
-    f.to_ntriples.should == f.to_n3
+    it "should return quoted string with language" do
+      g = Literal.untyped("tom", "en")
+      g.to_n3.should == "\"tom\"@en"
+      g.to_ntriples.should == g.to_n3
+    end
     
-    typed_int = Literal.typed(5, "http://www.w3.org/2001/XMLSchema#int")
-    typed_int.to_n3.should == "\"5\"^^<http://www.w3.org/2001/XMLSchema#int>"
-    typed_int.to_ntriples.should == typed_int.to_n3
+    it "should quote integer" do
+      typed_int = Literal.typed(5, "http://www.w3.org/2001/XMLSchema#int")
+      typed_int.to_n3.should == "\"5\"^^<http://www.w3.org/2001/XMLSchema#int>"
+      typed_int.to_ntriples.should == typed_int.to_n3
+    end
     
-    typed_string = Literal.typed("foo", "http://www.w3.org/2001/XMLSchema#string")
-    typed_string.to_n3.should == "\"foo\"^^<http://www.w3.org/2001/XMLSchema#string>"
-    typed_string.to_ntriples.should == typed_string.to_n3
+    it "should indicate typed string" do
+      typed_string = Literal.typed("foo", "http://www.w3.org/2001/XMLSchema#string")
+      typed_string.to_n3.should == "\"foo\"^^<http://www.w3.org/2001/XMLSchema#string>"
+    end
+    
+    it "should escape extended characters" do
+      g = Literal.untyped("松本 后子")
+      g.to_n3.should == "\"\\\u677E\\\u672C \\\u540E\\\u5B50\""
+    end
   end
   
   it "should normalize language tags to lower case" do
@@ -94,11 +106,49 @@ describe "Literals" do
     g.to_trix.should == "<typedLiteral datatype=\"http://www.w3.org/2001/XMLSchema#string\">tom</typedLiteral>"
   end
   
-  it "should handle XML litearls" do
-    # first we should detect XML literals and mark them as such in the class
-    f = Literal.typed("foo <sup>bar</sup> baz!", "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral")
-    f.xmlliteral?.should == true
-#    pending "TODO: the thought of XML literals makes me want to wretch"
+  describe "XML Literals" do
+    it "should indicate xmlliteral?" do
+      f = Literal.typed("foo <sup>bar</sup> baz!", "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral")
+      f.xmlliteral?.should == true
+    end
+    
+    it "should properly encode non-namespace literal" do
+      f = Literal.typed("foo <sup>bar</sup> baz!", "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral")
+      f.to_n3.should == "\"foo <sup>bar</sup> baz!\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral>"
+      f.to_ntriples.should == f.to_n3
+    end
+    
+    it "should add single namespace" do
+      f = Literal.typed("foo <sup>bar</sup> baz!", "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral",
+        :namespaces => {"dc" => Namespace.new("http://purl.org/dc/elements/1.1/", "dc")})
+        f.to_n3.should == "\"foo <sup xmlns:dc=\\\"http://purl.org/dc/elements/1.1/\\\">bar</sup> baz!\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral>"
+        f.to_ntriples.should == f.to_n3
+    end
+    
+    it "should add default namespace" do
+      f = Literal.typed("foo <sup>bar</sup> baz!", "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral",
+        :namespaces => {"" => Namespace.new("http://purl.org/dc/elements/1.1/", "")})
+      f.to_n3.should == "\"foo <sup xmlns=\\\"http://purl.org/dc/elements/1.1/\\\">bar</sup> baz!\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral>"
+      f.to_ntriples.should == f.to_n3
+    end
+    
+    it "should compare literals" do
+      f = Literal.typed("foo <sup>bar</sup> baz!", "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral")
+      g = Literal.typed("foo <sup>bar</sup> baz!", "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral")
+      f.should == g
+    end
+
+    it "should ignore namespace order" do
+      f = Literal.typed("foo <sup <sup xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">bar</sup> baz!", "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral")
+      g = Literal.typed("foo <sup <sup xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\">bar</sup> baz!", "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral")
+      f.should == g
+    end
+    
+    it "should ignore attribute order" do
+      f = Literal.typed("foo <sup a=\"a\" b=\"b\">bar</sup> baz!", "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral")
+      g = Literal.typed("foo <sup b=\"b\" a=\"a\">bar</sup> baz!", "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral")
+      f.should == g
+    end
   end
 
   it "build_from should infer the type" do
