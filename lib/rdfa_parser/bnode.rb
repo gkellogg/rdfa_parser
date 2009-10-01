@@ -20,9 +20,34 @@ module RdfaParser
       return self.identifier.to_s
     end
 
-    # BNode serialization in _:identifier format
+    ## 
+    # Exports the BNode in N-Triples form.
+    #
+    # ==== Example
+    #   b = BNode.new; b.to_n3  # => returns a string of the BNode in n3 form
+    #
+    # ==== Returns
+    # @return [String] The BNode in n3.
+    #
+    # @author Tom Morris
+
+    def to_n3
+      "_:#{self.identifier}"
+    end
+
+    ## 
+    # Exports the BNode in N-Triples form.
+    #
+    # ==== Example
+    #   b = BNode.new; b.to_ntriples  # => returns a string of the BNode in N-Triples form
+    #
+    # ==== Returns
+    # @return [String] The BNode in N-Triples.
+    #
+    # @author Tom Morris
+
     def to_ntriples
-      "_:#{self.to_s}"
+      self.to_n3
     end
 
     # The identifier used used for this BNode. Not evaluated until this is called, which means

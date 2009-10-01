@@ -19,6 +19,7 @@ spec/bnode_spec.rb
 spec/graph_spec.rb
 spec/literal_spec.rb
 spec/matchers.rb
+spec/namespace_spec.rb
 spec/rdfa_helper.rb
 spec/rdfa_parser_spec.rb
 spec/spec.opts

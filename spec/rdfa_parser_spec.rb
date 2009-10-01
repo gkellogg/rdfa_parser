@@ -31,6 +31,7 @@ describe "RDFa parser" do
     end
 
     test_cases.each do |t|
+      #next unless t.name == "Test0101"
       specify "test #{t.name}: #{t.title}" do
         rdfa_string = File.read(t.informationResourceInput)
         rdfa_parser = RdfaParser::RdfaParser.new(rdfa_string, t.originalInformationResourceInput)

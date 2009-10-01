@@ -20,8 +20,8 @@ RDFa parser written in pure Ruby. Yields each triple, or generate in-memory grap
   Basic usage:
   
   require 'rdfa_parser'
-  parser = RdfaParser::RdfaParser.new(stream, base_uri) do |subject, predicate, object|
-    puts "#{subject} #{predicate} #{object} ."
+  parser = RdfaParser::RdfaParser.new(stream, base_uri) do |triple|
+    puts triple.to_ntriple
   end
 
 == REQUIREMENTS:

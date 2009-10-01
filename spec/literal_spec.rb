@@ -70,7 +70,7 @@ describe "Literals" do
     f.to_ntriples.should == f.to_n3
     
     typed_int = Literal.typed(5, "http://www.w3.org/2001/XMLSchema#int")
-    typed_int.to_n3.should == "5^^<http://www.w3.org/2001/XMLSchema#int>"
+    typed_int.to_n3.should == "\"5\"^^<http://www.w3.org/2001/XMLSchema#int>"
     typed_int.to_ntriples.should == typed_int.to_n3
     
     typed_string = Literal.typed("foo", "http://www.w3.org/2001/XMLSchema#string")
@@ -118,16 +118,16 @@ describe "Literals" do
     xml.to_n3.should == "\"<b>foo</b>\"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral>"
   end
   
-  it "build_from_language" do
-    english = Literal.build_from_language("Have a nice day")
-    english.encoding.should == "en"
-    
-    french = Literal.build_from_language("Bonjour, madame. Parlez vous francais?")
-    french.encoding.should == "fr"
-    
-    german = Literal.build_from_language("Achtung")
-    german.encoding.should == "de"
-  end
+#  it "build_from_language" do
+#    english = Literal.build_from_language("Have a nice day")
+#    english.encoding.should == "en"
+#    
+#    french = Literal.build_from_language("Bonjour, madame. Parlez vous francais?")
+#    french.encoding.should == "fr"
+#    
+#    german = Literal.build_from_language("Achtung")
+#    german.encoding.should == "de"
+#  end
 
   # TODO: refactor based on new interface
   # describe "Languages" do

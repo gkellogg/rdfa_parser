@@ -108,8 +108,8 @@ class NTriplesParser
     case
     when resource.literal?
       node_type = Redland.librdf_node_get_literal_value_datatype_uri(resource.literal.node)
-      node_type = RdfaParser::URIRef.new(Redland.librdf_uri_to_string(node_type)) if node_type
-      RdfaParser::Literal.new(resource.literal.value, node_type, resource.literal.language)
+      node_type = Redland.librdf_uri_to_string(node_type) if node_type
+      RdfaParser::Literal.typed(resource.literal.value, node_type, :language => resource.literal.language)
     when resource.blank?
       # Cache anonymous blank identifiers
       @bn_hash ||= {}

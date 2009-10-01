@@ -8,6 +8,10 @@ module RdfaParser
       @nsbinding = {}
     end
 
+    def self.load (uri)
+      RdfXmlParser.new(open(uri)).graph
+    end
+
     def size
       @triples.size
     end

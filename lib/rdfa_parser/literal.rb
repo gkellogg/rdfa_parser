@@ -1,98 +1,99 @@
 require 'iconv'
 
 module RdfaParser
-    # An RDF Literal, with value, type and language elements.
-    class Literal
-      attr :value
-      attr :type
-      attr :lang
+  # An RDF Literal, with value, encoding and language elements.
+  class Literal
+    class Encoding
+      attr_reader :value
 
-      alias_method :encoding, :type
-      
-      # Create a new Literal. Optinally pass a namespaces hash
-      # for use in applying to rdf::XMLLiteral values.
-      def initialize(value, type, lang, options = {})
-        @value = value
-        @type = type
-        raise "type not URIRef" unless type.nil? || type.is_a?(URIRef)
-        @lang = lang
-        options = {:namespaces => {}}.merge(options)
+      def self.integer
+        @integer ||= coerce "http://www.w3.org/2001/XMLSchema#int"
+      end
 
-        if type == XML_LITERAL
-          # Map namespaces from context to each top-level element found within snippet
-          value = Nokogiri::XML::Document.parse("<foo>#{value}</foo>").root if value.is_a?(String)
-          @value = value.children.map do |c|
-            if c.is_a?(Nokogiri::XML::Element)
-              options[:namespaces].values.each do |ns|
-                c[ns.xmlns_attr] = ns.uri.to_s
-                #puts ns.inspect
-              end
-            end
-            c.to_s
-          end.join("")
+      def self.float
+        @float ||= coerce "http://www.w3.org/2001/XMLSchema#float"
+      end
+
+      def self.string
+        @string ||= coerce "http://www.w3.org/2001/XMLSchema#string"
+      end
+
+      def self.coerce(string_or_nil)
+        if string_or_nil.nil? || string_or_nil == ''
+          the_null_encoding
+        elsif xmlliteral == string_or_nil.to_s
+          xmlliteral
+        else
+          new string_or_nil
         end
       end
       
-      def self.untyped(contents, language = nil)
-        new(contents, nil, language)
+      def inspect
+        to_s()
       end
       
-      def self.typed(contents, type)
-        type = URIRef.new(type) unless type.is_a?(URIRef)
-        new(contents, type, nil)
-      end
-      
-      def self.build_from(object)
-        new(object.to_s, infer_encoding_for(object), nil)
+      def self.the_null_encoding
+        @the_null_encoding ||= Null.new(nil)
       end
 
-      def self.infer_encoding_for(object)
-        case object
-        when Integer  then URIRef.new("http://www.w3.org/2001/XMLSchema#int")
-        when Float    then URIRef.new("http://www.w3.org/2001/XMLSchema#float")
-        else               URIRef.new("http://www.w3.org/2001/XMLSchema#string")
+      def self.xmlliteral
+        @xmlliteral ||= XMLLiteral.new("http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral")
+      end
+      
+      def initialize(value)
+        @value = URIRef.new(value.to_s) if value
+      end
+
+      def should_quote?
+        #@value != self.class.integer.to_s
+        true  # All non-XML literals are quoted per W3C RDF Test Cases
+      end
+
+      def ==(other)
+        case other
+        when String
+          other == @value.to_s
+        when self.class
+          other.value.to_s == @value.to_s
+        else
+          false
         end
+      end
+
+      def hash
+        @value.hash
+      end
+
+      def to_s
+        @value.to_s
       end
 
       # Serialize literal, adding datatype and language elements, if present.
       # XMLLiteral and String values are encoding using C-style strings with
       # non-printable ASCII characters escaped.
-      def to_ntriples
-        # Perform translation on value if it's typed
-        v = case type
-        when XML_LITERAL  then "\"#{to_c_style}\""
-        when URIRef       then "\"#{value.to_s}\""
-        else                   "\"#{to_c_style}\""
-        end
-
-        v + (type ? "^^#{type.to_ntriples}" : "") + (lang ? "@#{lang}" : "")
-      end
-      alias_method :to_n3, :to_ntriples
-
-      # Output value
-      def to_s
-        @value.to_s
+      def format_as_n3(content, lang)
+        quoted_content = should_quote? ? "\"#{content}\"" : content
+        "#{quoted_content}^^<#{value}>#{lang ? "@#{lang}" : ""}"
       end
 
-      def ==(other)
-        case other
-        when String     then other == self.value
-        when self.class
-#          puts "Lit== #{other.lang.class} #{self.lang.class} #{other.lang == self.lang}"
-          if self.type == XML_LITERAL && other.type == XML_LITERAL
-            # XML compare of values
-            # FIXME: Nokogiri doesn't do a deep compare of elements
-           other.value == self.value && other.lang.to_s == self.lang.to_s
-           true
-          else
-            other.value == self.value &&
-            other.type.to_s == self.type.to_s &&
-            other.lang.to_s == self.lang.to_s
-          end
-        else false
-        end
+      def format_as_trix(value, lang)
+        lang = " xml:lang=\"#{lang}\"" if lang
+        "<typedLiteral datatype=\"#{@value}\"#{lang}>#{value}</typedLiteral>"
       end
       
+      def compare_contents(a, b, same_lang)
+        a == b && same_lang
+      end
+      
+      def encode_contents(contents, options)
+        contents
+      end
+
+      def xmlliteral?
+        false
+      end
+
+      private
       # "Borrowed" from JSON utf8_to_json
       MAP = {
         "\x0" => '\u0000',
@@ -135,8 +136,7 @@ module RdfaParser
       # Convert a UTF8 encoded Ruby string _string_ to a C-style string, encoded with
       # UTF16 big endian characters as \U????, and return it.
       if String.method_defined?(:force_encoding)
-        def to_c_style # :nodoc:
-          string = value.dup
+        def c_style(string) # :nodoc:
           string << '' # XXX workaround: avoid buffer sharing
           string.force_encoding(Encoding::ASCII_8BIT)
           string.gsub!(/["\\\/\x0-\x1f]/) { MAP[$&] }
@@ -156,8 +156,8 @@ module RdfaParser
           string
         end
       else
-        def to_c_style # :nodoc:
-          string = value.gsub(/["\\\/\x0-\x1f]/) { MAP[$&] }
+        def c_style(string) # :nodoc:
+          string = string.gsub(/["\\\/\x0-\x1f]/) { MAP[$&] }
           string.gsub!(/(
                           (?:
                             [\xc2-\xdf][\x80-\xbf]    |
@@ -174,4 +174,164 @@ module RdfaParser
        end
       end
     end
+    
+    class Null < Encoding
+      def to_s
+        ''
+      end
+
+      def format_as_n3(content, lang)
+        "\"#{c_style(content)}\"" + (lang ? "@#{lang}" : "")
+        # Perform translation on value if it's typed
+      end
+
+      def format_as_trix(content, lang)
+        if lang
+          "<plainLiteral xml:lang=\"#{lang}\"\>#{content}</plainLiteral>"
+        else
+          "<plainLiteral>#{content}</plainLiteral>"
+        end
+      end
+
+      def inspect
+        "<theReddy::TypeLiteral::Encoding::Null>"
+      end
+
+      def xmlliteral?
+        false
+      end
+    end
+
+    class XMLLiteral < Encoding
+      # Compare XMLLiterals
+      # FIXME: Nokogiri doesn't do a deep compare of elements
+      def compare_contents(a, b, same_lang)
+        true
+      end
+      
+      def format_as_n3(content, lang)
+        "\"#{c_style(content)}\"^^<#{value}>"
+      end
+
+      # Map namespaces from context to each top-level element found within snippet
+      def encode_contents(contents, options)
+        contents = Nokogiri::XML::Document.parse("<foo>#{contents}</foo>").root if contents.is_a?(String)
+        @contents = contents.children.map do |c|
+          if c.is_a?(Nokogiri::XML::Element)
+            options[:namespaces].values.each do |ns|
+              c[ns.xmlns_attr] = ns.uri.to_s
+              #puts ns.inspect
+            end
+          end
+          c.to_s
+        end.join("")
+      end
+
+      def xmlliteral?
+        true
+      end
+    end
+
+    class Language
+      attr_accessor :value
+      def initialize(string)
+        @value = string.to_s.downcase
+      end
+
+      def clean(string)
+        case string
+        when "eng"; "en"
+        else string
+        end
+      end
+
+      def == (other)
+        case other
+        when String
+          other == @value
+        when self.class
+          other.value == @value
+        end
+      end
+      
+      def to_s; @value; end
+    end
+
+    attr_accessor :contents, :encoding, :lang
+    
+    # Create a new Literal. Optinally pass a namespaces hash
+    # for use in applying to rdf::XMLLiteral values.
+    def initialize(contents, encoding, options = {})
+      unless encoding.is_a?(Encoding)
+        raise TypeError, "#{encoding.inspect} should be an instance of Encoding"
+      end
+      @encoding = encoding
+      lang = options.delete(:language)
+      @lang = Language.new(lang) if lang
+      options = {:namespaces => {}}.merge(options)
+
+      @contents = @encoding.encode_contents(contents, options)
+    end
+    
+    def self.untyped(contents, language = nil)
+      options = {}
+      options[:language] = language if language
+      new(contents, Encoding.the_null_encoding, options)
+    end
+    
+    # Options include:
+    # _namespaces_:: A hash of namespace entries (for XMLLiteral)
+    # _language_:: Language encoding
+    def self.typed(contents, encoding, options = {})
+      encoding = Encoding.coerce(encoding)
+      new(contents, encoding, options)
+    end
+    
+    def self.build_from(object)
+      new(object.to_s, infer_encoding_for(object))
+    end
+
+    def self.infer_encoding_for(object)
+      case object
+      when Integer  then Encoding.new("http://www.w3.org/2001/XMLSchema#int")
+      when Float    then Encoding.new("http://www.w3.org/2001/XMLSchema#float")
+      when Time     then Encoding.new("http://www.w3.org/2001/XMLSchema#time")
+      when DateTime then Encoding.new("http://www.w3.org/2001/XMLSchema#dateTime")
+      when Date     then Encoding.new("http://www.w3.org/2001/XMLSchema#date")
+      else               Encoding.new("http://www.w3.org/2001/XMLSchema#string")
+      end
+    end
+
+   class << self
+      protected :new
+    end
+
+    def ==(other)
+      case other
+      when String     then other == self.contents
+      when self.class
+        other.encoding == @encoding &&
+        @encoding.compare_contents(self.contents, other.contents, other.lang == @lang)
+      else false
+      end
+    end
+
+    def to_n3
+      encoding.format_as_n3(self.contents, @lang)
+    end
+    alias_method :to_ntriples, :to_n3
+
+    def to_trix
+      encoding.format_as_trix(@contents, @lang)
+    end
+
+    def xmlliteral?
+      encoding.xmlliteral?
+    end
+    
+    # Output value
+    def to_s
+      self.contents.to_s
+    end
+  end
 end

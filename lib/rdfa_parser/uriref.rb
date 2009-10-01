@@ -3,6 +3,13 @@ require 'net/http'
 module RdfaParser
   class URIRef
     attr_accessor :uri
+    
+    # Create a URIRef from a URI  or a fragment and a URI
+    #
+    # ==== Example
+    #   u = URIRef.new("http://example.com")
+    #   u = URIRef.new("foo", u) => "http://example.com/foo"
+    # 
     def initialize (*args)
       args.each {|s| test_string(s)}
       if args.size == 1
@@ -59,5 +66,10 @@ module RdfaParser
         end
       end
     end
+
+#    def load_graph
+#      get = Net::HTTP.start(@uri.host, @uri.port) {|http| [:xml, http.get(@uri.path)] }
+#      return Reddy::RdfXmlParser.new(get[1].body, @uri.to_s).graph if get[0] == :xml
+#    end
   end
 end

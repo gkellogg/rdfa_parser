@@ -274,17 +274,17 @@ module RdfaParser
         if type and !type.empty? and (type_resource.to_s != XML_LITERAL.to_s)
           # typed literal
           add_debug(element, "typed literal")
-          current_object_literal = Literal.new(content || element.inner_text, type_resource, language)
+          current_object_literal = Literal.typed(content || element.inner_text, type_resource, :language => language)
         elsif content or (children_node_types == [Nokogiri::XML::Text]) or (element.children.length == 0) or (type == '')
           # plain literal
           add_debug(element, "plain literal")
-          current_object_literal = Literal.new(content || element.inner_text, nil, language)
+          current_object_literal = Literal.untyped(content || element.inner_text, language)
         elsif (children_node_types != [Nokogiri::XML::Text]) and (type == nil or type_resource.to_s == XML_LITERAL.to_s)
           # XML Literal
           add_debug(element, "XML Literal")
           # SPEC CONFUSION: what is the associativity of 'and' and 'or'?
           # SPEC CONFUSION: does it have to be "rdf:XMLLiteral", or can it be another prefix? Maybe write the whole URI.
-          current_object_literal = Literal.new(element, XML_LITERAL, language, :namespaces => uri_mappings)
+          current_object_literal = Literal.typed(element, XML_LITERAL, :language => language, :namespaces => uri_mappings)
           recurse = false
         end
       

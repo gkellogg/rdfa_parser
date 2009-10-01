@@ -1,14 +1,9 @@
 module RdfaParser
   # Triple from Reddy, to aid it merger
   class Triple
-    class InvalidPredicate < StandardError
-    end
-
-    class InvalidSubject < StandardError
-    end
-
-    class InvalidObject < StandardError
-    end
+    class InvalidPredicate < StandardError; end
+    class InvalidSubject < StandardError; end
+    class InvalidObject < StandardError; end
 
     attr_accessor :subject, :object, :predicate
 
@@ -57,14 +52,6 @@ module RdfaParser
 
     alias_method :==, :eql?
 
-    # Parse a statement in NTriple form. Ignore statements that are comments or blank lines.
-    #
-    # @rase [Error] if statement is not a valid triple
-    # @author Gregg Kellogg
-    def self.parse(statement)
-      return nil if statement.match(/^(#.*|\s*)$/)
-    end
-
     protected
 
     def self.coerce_subject(subject)
@@ -93,7 +80,7 @@ module RdfaParser
       else
         raise InvalidPredicate, "Predicate should be a URI"
       end
-    rescue Reddy::UriRelativeException => e
+    rescue UriRelativeException => e
       raise InvalidPredicate, "Couldn't make a URIRef: #{e.message}"
     end
 

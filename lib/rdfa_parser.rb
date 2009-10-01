@@ -24,7 +24,7 @@ module RdfaParser
   )
 
   RDF_TYPE = URIRef.new("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")
-  XML_LITERAL = URIRef.new("http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral")
+  XML_LITERAL = Literal::Encoding.xmlliteral
 
   XH_MAPPING = {"" => Namespace.new("http://www.w3.org/1999/xhtml/vocab\#", nil)}
 end

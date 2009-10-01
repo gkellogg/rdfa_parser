@@ -5,10 +5,11 @@ require 'getoptlong'
 
 class Parse
   def parse(file, base_uri)
-    parser = RdfaParser::RdfaParser.new(File.read(file), base_uri)
+    parser = RdfaParser::RdfaParser.new(File.read(file), base_uri) do |triple|
+      puts triple.to_ntriples
+    end
 
     puts parser.debug.join("\n\t") if $verbose
-    puts parser.graph.to_ntriples
   rescue RdfaParser::ParserException => e
     puts "Parse failure"
     if $verbose
