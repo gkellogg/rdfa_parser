@@ -1,3 +1,9 @@
+=== 0.0.2 2009-10-10
+* Switch to jeweler from newgem/hoe
+* RdfaParser.new just creates parser, allowing a different graph to be substituted.
+* parser.parse() performs parse.
+* Added Graph.to_rdfxml to output graph in XML serialization
+
 === 0.0.1 2009-09-26
 
 * Previous versions based on original work by Ben Adida.
