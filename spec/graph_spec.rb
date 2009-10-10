@@ -23,55 +23,71 @@ describe "Graphs" do
     end.should_not raise_error
   end
   
-  it "should output NTriple" do
+  it "should return unique subjects" do
     f = Graph.new
     ex = Namespace.new("http://example.org/", "ex")
     foaf = Namespace.new("http://xmlns.com/foaf/0.1/", "foaf")
     f << Triple.new(ex.john, foaf.knows, ex.jane)
+    f << Triple.new(ex.john, foaf.knows, ex.rick)
     f << Triple.new(ex.jane, foaf.knows, ex.rick)
-    f << Triple.new(ex.rick, foaf.knows, ex.john)
-    nt = "<http://example.org/john> <http://xmlns.com/foaf/0.1/knows> <http://example.org/jane> .\n<http://example.org/jane> <http://xmlns.com/foaf/0.1/knows> <http://example.org/rick> .\n<http://example.org/rick> <http://xmlns.com/foaf/0.1/knows> <http://example.org/john> .\n"
-    f.to_ntriples.should == nt
+    f.subjects.should == [ex.john.uri, ex.jane.uri]
   end
   
-  it "should allow you to select one resource" do
-    f = Graph.new
-    ex = Namespace.new("http://example.org/", "ex")
-    foaf = Namespace.new("http://xmlns.com/foaf/0.1/", "foaf")
-    f << Triple.new(ex.john, foaf.knows, ex.jane)
-    f << Triple.new(ex.jane, foaf.knows, ex.rick)
-    f << Triple.new(ex.rick, foaf.knows, ex.john)
-    f.get_resource(ex.john).size.should == 1
-  end
-  
-  it "should allow iteration" do
-    f = Graph.new
-    ex = Namespace.new("http://example.org/", "ex")
-    foaf = Namespace.new("http://xmlns.com/foaf/0.1/", "foaf")
-    f << Triple.new(ex.john, foaf.knows, ex.jane)
-    f << Triple.new(ex.jane, foaf.knows, ex.rick)
-    f << Triple.new(ex.rick, foaf.knows, ex.john)
-    count = 0
-    f.each do |t|
-      count = count + 1
-      t.class.should == Triple
+  describe "with triples" do
+    before(:all) do
+      @f = Graph.new
+      @ex = Namespace.new("http://example.org/", "ex")
+      foaf = Namespace.new("http://xmlns.com/foaf/0.1/", "foaf")
+      @f.bind(foaf)
+      @f << Triple.new(@ex.john, foaf.knows, @ex.jane)
+      @f << Triple.new(@ex.jane, foaf.knows, @ex.rick)
+      @f << Triple.new(@ex.rick, foaf.knows, @ex.john)
     end
-    count.should == 3
-  end
-  
-  it "should allow iteration over a particular subject" do
-    f = Graph.new
-    ex = Namespace.new("http://example.org/", "ex")
-    foaf = Namespace.new("http://xmlns.com/foaf/0.1/", "foaf")
-    f << Triple.new(ex.john, foaf.knows, ex.jane)
-    f << Triple.new(ex.jane, foaf.knows, ex.rick)
-    f << Triple.new(ex.rick, foaf.knows, ex.john)
-    count = 0
-    f.each_with_subject(ex.john) do |t|
-      count = count + 1
-      t.class.should == Triple
+    
+    it "should output NTriple" do
+      nt = "<http://example.org/john> <http://xmlns.com/foaf/0.1/knows> <http://example.org/jane> .\n<http://example.org/jane> <http://xmlns.com/foaf/0.1/knows> <http://example.org/rick> .\n<http://example.org/rick> <http://xmlns.com/foaf/0.1/knows> <http://example.org/john> .\n"
+      @f.to_ntriples.should == nt
     end
-    count.should == 1
+    
+    it "should output RDF/XML" do
+      rdfxml = <<HERE
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/">
+  <rdf:Description rdf:about="http://example.org/john">
+    <foaf:knows rdf:resource="http://example.org/jane"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/jane">
+    <foaf:knows rdf:resource="http://example.org/rick"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/rick">
+    <foaf:knows rdf:resource="http://example.org/john"/>
+  </rdf:Description>
+</rdf:RDF>
+HERE
+      @f.to_rdfxml.should == rdfxml
+    end
+  
+    it "should allow you to select one resource" do
+      @f.get_resource(@ex.john).size.should == 1
+    end
+  
+    it "should allow iteration" do
+      count = 0
+      @f.each do |t|
+        count = count + 1
+        t.class.should == Triple
+      end
+      count.should == 3
+    end
+  
+    it "should allow iteration over a particular subject" do
+      count = 0
+      @f.each_with_subject(@ex.john) do |t|
+        count = count + 1
+        t.class.should == Triple
+      end
+      count.should == 1
+    end
   end
   
   it "should be able to determine whether or not it has existing BNodes" do

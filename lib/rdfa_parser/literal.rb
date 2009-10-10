@@ -77,9 +77,15 @@ module RdfaParser
         "#{quoted_content}^^<#{value}>#{lang ? "@#{lang}" : ""}"
       end
 
-      def format_as_trix(value, lang)
+      def format_as_trix(content, lang)
         lang = " xml:lang=\"#{lang}\"" if lang
-        "<typedLiteral datatype=\"#{@value}\"#{lang}>#{value}</typedLiteral>"
+        "<typedLiteral datatype=\"#{@value}\"#{lang}>#{content}</typedLiteral>"
+      end
+      
+      def xml_args(content, lang)
+        hash = {"rdf:datatype" => @value.to_s}
+        hash["xml:lang"] = lang if lang
+        [content.to_s, hash]
       end
       
       def compare_contents(a, b, same_lang)
@@ -149,7 +155,7 @@ module RdfaParser
                           )+ |
                           [\x80-\xc1\xf5-\xff]       # invalid
                         )/nx) { |c|
-                          c.size == 1 and raise GeneratorError, "invalid utf8 byte: '#{c}'"
+                          c.size == 1 and raise TypeError, "invalid utf8 byte: '#{c}'"
                           s = Iconv.new('utf-16be', 'utf-8').iconv(c).unpack('H*')[0].upcase
                           s.gsub!(/.{4}/n, '\\\\u\&')
                         }
@@ -167,7 +173,7 @@ module RdfaParser
                           )+ |
                           [\x80-\xc1\xf5-\xff]       # invalid
                         )/nx) { |c|
-                          c.size == 1 and raise GeneratorError, "invalid utf8 byte: '#{c}'"
+                          c.size == 1 and raise TypeError, "invalid utf8 byte: '#{c}'"
                           s = Iconv.new('utf-16be', 'utf-8').iconv(c).unpack('H*')[0].upcase
                           s.gsub!(/.{4}/n, '\\\\u\&')
                         }
@@ -194,6 +200,12 @@ module RdfaParser
         end
       end
 
+      def xml_args(content, lang)
+        hash = {}
+        hash["xml:lang"] = lang if lang
+        [content, hash]
+      end
+      
       def inspect
         "<theReddy::TypeLiteral::Encoding::Null>"
       end
@@ -218,6 +230,12 @@ module RdfaParser
       
       def format_as_n3(content, lang)
         "\"#{c_style(content)}\"^^<#{value}>"
+      end
+
+      def xml_args(content, lang)
+        hash = {"rdf:parseType" => "Literal"}
+        hash["xml:lang"] = lang if lang
+        [content, hash]
       end
 
       # Map namespaces from context to each top-level element found within snippet
@@ -330,6 +348,10 @@ module RdfaParser
 
     def to_trix
       encoding.format_as_trix(@contents, @lang)
+    end
+    
+    def xml_args
+      encoding.xml_args( @contents, @lang)
     end
 
     def xmlliteral?

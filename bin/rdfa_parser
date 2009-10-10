@@ -5,28 +5,27 @@ require 'getoptlong'
 
 class Parse
   def parse(file, base_uri)
-    parser = RdfaParser::RdfaParser.new(File.read(file), base_uri) do |triple|
-      puts triple.to_ntriples
+    parser = RdfaParser::RdfaParser.new
+    parser.parse(File.read(file), base_uri)
+    case $format
+    when "xml"
+      puts parser.graph.to_rdfxml
+    else
+      puts parser.graph.to_ntriples
     end
 
     puts parser.debug.join("\n\t") if $verbose
   rescue RdfaParser::ParserException => e
     puts "Parse failure"
     if $verbose
-      msg = [e.message]
-      msg += parser.debug rescue []
-      msg += [""]
-      puts msg.join("\n\t")
-      puts parser.graph.to_ntriples rescue nil
+      puts e.message
+      puts parser.debug if parser
     end
     #raise
   rescue Exception => e
     puts "Parser fault"
-    msg = [e.message]
-    msg += parser.debug rescue []
-    msg += [""]
-    puts msg.join("\n\t")
-    puts parser.graph.to_ntriples rescue nil
+    puts e.message
+    puts parser.debug if parser
     raise
   end
 end
@@ -37,12 +36,14 @@ base_uri  = "http://example.com"
 opts = GetoptLong.new(
   ["--verbose", GetoptLong::NO_ARGUMENT],
   ["--debug", GetoptLong::NO_ARGUMENT],
+  ["--format", GetoptLong::REQUIRED_ARGUMENT],
   ["--uri", GetoptLong::REQUIRED_ARGUMENT]
 )
 opts.each do |opt, arg|
   case opt
   when '--verbose' then $verbose = true
   when '--debug' then $DEBUG = true
+  when '--format' then $format = arg
   when '--uri' then base_uri = arg
   end
 end

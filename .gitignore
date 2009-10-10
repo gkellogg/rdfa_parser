@@ -1,3 +1,6 @@
+rdoc/
+pkg/
 doc/
 .loadpath
 .project
+*.gemspec

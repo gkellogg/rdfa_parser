@@ -47,32 +47,40 @@ module RdfaParser
       end
     end
 
+    # Create new parser instance. Options:
+    # _graph_:: Graph to parse into, otherwie a new RdfaParser::Graph instance is created
+    def initialize(options = {})
+      options = {:graph => Graph.new}.merge(options)
+      @debug = []
+      BNode.reset # Start sequence anew
+
+      # initialize the triplestore
+      @graph = options[:graph]
+    end
+  
     # Parse XHRML+RDFa document from a string or input stream to closure or graph.
     # _base_ indicates the base URI of the document.
     #
     # Optionally, the stream may be a Nokogiri::HTML::Document
     # With a block, yeilds each statement with URIRef, BNode or Literal elements
-    def initialize(stream, base, &block) # :yields: triple
-      @debug = []
-      BNode.reset # Start sequence anew
-
+    #
+    # Raises RdfaParser::RdfaException or subclass
+    def parse(stream, base, &block) # :yields: triple
       @doc = case stream
       when Nokogiri::HTML::Document then stream
       when Nokogiri::XML::Document then stream
       else   Nokogiri::HTML.parse(stream, base)
       end
-      @base = base
-
-      # initialize the triplestore
-      @graph = Graph.new
+      @base = base.to_s
+      raise ParserException, "Empty document" if @doc.nil?
       @callback = block
-    
+
       # parse
       parse_whole_document(@doc, @base)
-    
+
       @graph
     end
-  
+    
     protected
   
     # add a triple, object can be literal or URI or bnode
@@ -123,6 +131,8 @@ module RdfaParser
 
     # The recursive helper function
     def traverse(element, evaluation_context)
+      raise ParserException, "Can't parse nil element" if element.nil?
+      
       # local variables [5.5 Step 1]
       recurse = true
       skip = false

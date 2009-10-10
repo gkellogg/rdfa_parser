@@ -20,6 +20,10 @@ module RdfaParser
       @triples.each { |value| yield value }
     end
     
+    def subjects
+      @triples.map {|t| t.subject.uri}.uniq
+    end
+    
     def [] (item)
       @triples[item]
     end
@@ -91,6 +95,34 @@ module RdfaParser
     # Output graph using to_ntriples
     def to_s; self.to_ntriples; end
 
+    # Dump model to RDF/XML
+    def to_rdfxml
+      rdfxml = ""
+      xml = builder = Builder::XmlMarkup.new(:target => rdfxml, :indent => 2)
+      rdf_attrs = nsbinding.values.inject({}) { |hash, ns| hash.merge(ns.xmlns_attr => ns.uri)}
+      rdf_attrs["xmlns:rdf"] = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      
+      # Create reverse map of namespaces for easy lookup
+      uri_bindings = {}
+      nsbinding.each_pair do |abbr, ns|
+        uri_bindings[ns.uri.to_s] = abbr
+      end
+      
+      xml.instruct!
+      xml.rdf(:RDF, rdf_attrs) do
+        # Add statements for each subject
+        subjects.each do |s|
+          xml.rdf(:Description, "rdf:about" => s) do
+            each_with_subject(s) do |triple|
+              xml.tag!(triple.predicate.to_qname(uri_bindings), *triple.object.xml_args)
+            end
+          end
+        end
+      end
+
+      rdfxml
+    end
+    
     ## 
     # Creates a new namespace given a URI and the short name and binds it to the graph.
     #
@@ -115,7 +147,7 @@ module RdfaParser
       if namespace.class == Namespace
         @nsbinding["#{namespace.short}"] = namespace
       else
-        raise
+        raise GraphException, "Can't bind #{namespace.inspect} as namespace"
       end
     end
 
@@ -171,7 +203,7 @@ module RdfaParser
           self << t
         }
       else
-        raise "join requires you provide a graph object"
+        raise GraphException, "join requires you provide a graph object"
       end
     end
 

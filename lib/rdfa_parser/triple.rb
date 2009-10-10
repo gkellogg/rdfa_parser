@@ -1,10 +1,6 @@
 module RdfaParser
   # Triple from Reddy, to aid it merger
   class Triple
-    class InvalidPredicate < StandardError; end
-    class InvalidSubject < StandardError; end
-    class InvalidObject < StandardError; end
-
     attr_accessor :subject, :object, :predicate
 
     ##
@@ -34,7 +30,7 @@ module RdfaParser
     end
     
     def to_s; self.to_ntriples; end
-
+    
     def inspect
       [@subject, @predicate, @object].inspect
     end
@@ -89,7 +85,11 @@ module RdfaParser
       when Addressable::URI
         URIRef.new(object.to_s)
       when String, Integer, Float
-        Literal.new(object, nil, nil)
+        if object.to_s =~ /\S+\/\/\S+/ # does it smell like a URI?
+          URIRef.new(object.to_s)
+        else
+          Literal.new(object, nil, nil)
+        end
       when URIRef, BNode, Literal
         object
       else

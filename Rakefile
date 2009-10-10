@@ -1,34 +1,52 @@
 require 'rubygems'
-gem 'hoe', '>= 2.1.0'
-require 'hoe'
-require 'fileutils'
-require './lib/rdfa_parser'
-
-Hoe.plugin :newgem
-# Hoe.plugin :website
-# Hoe.plugin :cucumberfeatures
-
-# Generate all the Rake tasks
-# Run 'rake -T' to see list of generated tasks (from gem root directory)
-$hoe = Hoe.spec 'rdfa_parser' do
-  self.developer            'Gregg Kellogg', 'gregg@kellogg-ssoc.com'
-  self.rubyforge_name       = "rdfa-parser"
-  self.url                  = "http://fixme"
-  self.extra_deps           = [
-    ['addressable', '>= 2.0.0'],
-    ['nokogiri',    '>= 1.3.3']
-  ]
-  self.extra_dev_deps       = [
-    ['activesupport', '>= 2.3.0'],
-  ]
-  self.extra_rdoc_files     = %w(README.rdoc)
-  self.readme_file          = "README.rdoc"
-
+begin
+  gem 'jeweler'
+  require 'jeweler'
+  Jeweler::Tasks.new do |gemspec|
+    gemspec.name = "rdfa_parser"
+    gemspec.summary = "RDFa parser written in pure Ruby."
+    gemspec.description = " Yields each triple, or generate in-memory graph"
+    gemspec.email = "gregg@kellogg-assoc.com"
+    gemspec.homepage = "http://github.com/gkellogg/rdfa_parser"
+    gemspec.authors = ["Gregg Kellogg"]
+    gemspec.add_dependency('addressable', '>= 2.0.0')
+    gemspec.add_dependency('nokogiri', '>= 1.3.3')
+    gemspec.add_dependency('builder', '>= 2.1.2')
+    gemspec.add_development_dependency('rspec')
+    gemspec.add_development_dependency('activesupport', '>= 2.3.0')
+    gemspec.extra_rdoc_files     = %w(README.rdoc)
+  end
+  Jeweler::GemcutterTasks.new
+rescue LoadError
+  puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
 end
 
-require 'newgem/tasks'
-Dir['tasks/**/*.rake'].each { |t| load t }
+require 'spec/rake/spectask'
+Spec::Rake::SpecTask.new(:spec) do |spec|
+  spec.libs << 'lib' << 'spec'
+  spec.spec_files = FileList['spec/**/*_spec.rb']
+end
 
-# TODO - want other tests/tasks run by default? Add them to the list
-# remove_task :default
-# task :default => [:spec, :features]
+Spec::Rake::SpecTask.new(:rcov) do |spec|
+  spec.libs << 'lib' << 'spec'
+  spec.pattern = 'spec/**/*_spec.rb'
+  spec.rcov = true
+end
+
+task :spec => :check_dependencies
+
+task :default => :spec
+
+require 'rake/rdoctask'
+Rake::RDocTask.new do |rdoc|
+  if File.exist?('VERSION')
+    version = File.read('VERSION')
+  else
+    version = ""
+  end
+
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.title = "rdfa_parser #{version}"
+  rdoc.rdoc_files.include('README*')
+  rdoc.rdoc_files.include('lib/**/*.rb')
+end

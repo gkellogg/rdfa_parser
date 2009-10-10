@@ -20,7 +20,8 @@ describe "RDFa parser" do
     </html>
     EOF
 
-    parser = RdfaParser::RdfaParser.new(sampledoc, "http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/0001.xhtml")
+    parser = RdfaParser::RdfaParser.new
+    parser.parse(sampledoc, "http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/0001.xhtml")
     parser.graph.size.should == 1
   end
 
@@ -34,7 +35,8 @@ describe "RDFa parser" do
       #next unless t.name == "Test0101"
       specify "test #{t.name}: #{t.title}" do
         rdfa_string = File.read(t.informationResourceInput)
-        rdfa_parser = RdfaParser::RdfaParser.new(rdfa_string, t.originalInformationResourceInput)
+        rdfa_parser = RdfaParser::RdfaParser.new
+        rdfa_parser.parse(rdfa_string, t.originalInformationResourceInput)
 
         query_string = t.informationResourceResults ? File.read(t.informationResourceResults) : ""
 

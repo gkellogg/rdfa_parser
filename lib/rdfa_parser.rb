@@ -6,17 +6,17 @@ Dir.glob(File.join(File.dirname(__FILE__), 'rdfa_parser/**.rb')).each { |f| requ
 begin
   require 'nokogiri'
   require 'addressable/uri'
+  require 'builder'
 rescue LoadError
   require 'rubygems' unless ENV['NO_RUBYGEMS']
   gem 'nokogiri'
   gem 'addressable'
   require 'nokogiri'
   require 'addressable/uri'
+  require 'builder'
 end
 
 module RdfaParser
-  VERSION = '0.0.1'
-
   LINK_TYPES = %w(
     alternate appendix bookmark cite chapter contents copyright first glossary
     help icon index last license meta next p3pv1 prev role section stylesheet subsection

@@ -18,11 +18,16 @@ module RdfaParser
         @uri = Addressable::URI.join(*args.map{|s| s.to_s}.reverse)
       end
       if @uri.relative?
-        raise UriRelativeException, "<" + @uri.to_s + ">"
+        raise UriRelativeException, "<" + @uri.to_s + "> is a relative URI"
       end
       if !@uri.to_s.match(/^javascript/).nil?
-        raise "Javascript pseudo-URIs are not acceptable"
+        raise ParserException, "Javascript pseudo-URIs are not acceptable"
       end
+      
+      # Unique URI through class hash to ensure that URIRefs can be easily compared
+      @@uri_hash ||= {}
+      @@uri_hash[@uri.to_s] ||= @uri
+      @uri = @@uri_hash[@uri.to_s]
     end
     
     def + (input)
@@ -47,7 +52,7 @@ module RdfaParser
     def == (other)
       case other
       when URIRef   then @uri == other.uri
-      else               @uri.to_s == other
+      else               @uri.to_s == other.to_s
       end
     end
   
@@ -59,10 +64,27 @@ module RdfaParser
       "<" + @uri.to_s + ">"
     end
   
+    # Output URI as QName using URI binding
+    def to_qname(uri_binding = {})
+      uri_base = @uri.to_s
+      sn = short_name.to_s
+      uri_base = uri_base[0, uri_base.length - sn.length]
+      if uri_binding.has_key?(uri_base)
+        "#{uri_binding[uri_base]}:#{sn}"
+      else
+        raise ParserException, "Couldn't find QName for #{@uri}"
+      end
+    end
+    
+    # Output URI as resource reference for RDF/XML
+    def xml_args
+      [{"rdf:resource" => @uri.to_s}]
+    end
+    
     def test_string (string)
       string.to_s.each_byte do |b|
         if b >= 0 and b <= 31
-          raise "URI must not contain control characters"
+          raise ParserException, "URI must not contain control characters"
         end
       end
     end

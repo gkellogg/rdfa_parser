@@ -71,6 +71,16 @@ describe "URI References" do
     uri2.to_s.should == "http://example.org/foo#bar"
   end
 
+  it "should create QName from URI with namespace" do
+    uri = URIRef.new("http://example.org/foo#bar")
+    uri.to_qname("http://example.org/foo#" => "ex").should == "ex:bar"
+  end
+  
+  it "should create resource hash for RDF/XML" do
+    uri = URIRef.new("http://example.org/foo#bar")
+    uri.xml_args.should == [{"rdf:resource" => uri.to_s}]
+  end
+  
 #   TEST turned off until parser is working.  
 #   it "should allow the programmer to Follow His Nose" do
 #     a = URIRef.new("http://127.0.0.1:3001/test")

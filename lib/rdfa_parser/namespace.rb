@@ -28,7 +28,7 @@ module RdfaParser
       if shortname_valid?(short)
         @short = short
       else
-        raise
+        raise ParserException, "Invalid shortname '#{short}"
       end
     end
 
@@ -61,7 +61,7 @@ module RdfaParser
       if graph.class == Graph
         graph.bind(self)
       else
-        raise
+        raise GraphException, "Can't bind namespace to graph of type #{graph.class}"
       end
     end
 
