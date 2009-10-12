@@ -4,3 +4,4 @@ doc/
 .loadpath
 .project
 *.gemspec
+*.DS_Store
