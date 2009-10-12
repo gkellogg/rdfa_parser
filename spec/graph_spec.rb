@@ -33,6 +33,13 @@ describe "Graphs" do
     f.subjects.should == [ex.john.uri, ex.jane.uri]
   end
   
+  it "should return bnode subjects" do
+    f = Graph.new
+    bn = BNode.new
+    f.add_triple bn, URIRef.new("http://xmlns.com/foaf/0.1/knows"), BNode.new
+    f.subjects.should == [bn.to_s]
+  end
+  
   describe "with triples" do
     before(:all) do
       @f = Graph.new

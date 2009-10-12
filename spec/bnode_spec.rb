@@ -25,4 +25,13 @@ describe "Blank nodes" do
     a.eql?(a3).should be_false
   end
   
+  it "should resource hash for RDF/XML named bnode" do
+    b = BNode.new("foo")
+    b.xml_args.should == [{"rdf:nodeID" => "foo"}]
+  end
+  
+  it "should resource hash for RDF/XML anonymous bnode" do
+    b = BNode.new
+    b.xml_args.should == [{"rdf:nodeID" => b.identifier}]
+  end
 end

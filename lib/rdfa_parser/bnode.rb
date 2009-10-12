@@ -50,6 +50,11 @@ module RdfaParser
       self.to_n3
     end
 
+    # Output URI as resource reference for RDF/XML
+    def xml_args
+      [{"rdf:nodeID" => self.identifier}]
+    end
+    
     # The identifier used used for this BNode. Not evaluated until this is called, which means
     # that BNodes that are never used in a triple won't polute the sequence.
     def identifier

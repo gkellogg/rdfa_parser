@@ -21,7 +21,7 @@ module RdfaParser
     end
     
     def subjects
-      @triples.map {|t| t.subject.uri}.uniq
+      @triples.map {|t| t.subject.to_s}.uniq
     end
     
     def [] (item)
@@ -99,20 +99,22 @@ module RdfaParser
     def to_rdfxml
       rdfxml = ""
       xml = builder = Builder::XmlMarkup.new(:target => rdfxml, :indent => 2)
-      rdf_attrs = nsbinding.values.inject({}) { |hash, ns| hash.merge(ns.xmlns_attr => ns.uri)}
-      rdf_attrs["xmlns:rdf"] = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      rdf_attrs = nsbinding.values.inject({}) { |hash, ns| hash.merge(ns.xmlns_attr => ns.uri.to_s)}
+      rdf_attrs = {
+        "xmlns::rdf"  => "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "xmlns:rdfs"  => "http://www.w3.org/2000/01/rdf-schema#",
+        "xmlns:xhv"   => "http://www.w3.org/1999/xhtml/vocab#",
+        "xmlns:xml"   => "http://www.w3.org/XML/1998/namespace",
+      }.merge(rdf_attrs)
       
       # Create reverse map of namespaces for easy lookup
-      uri_bindings = {}
-      nsbinding.each_pair do |abbr, ns|
-        uri_bindings[ns.uri.to_s] = abbr
-      end
+      uri_bindings = rdf_attrs.invert
       
       xml.instruct!
       xml.rdf(:RDF, rdf_attrs) do
         # Add statements for each subject
         subjects.each do |s|
-          xml.rdf(:Description, "rdf:about" => s) do
+          xml.rdf(:Description, (s.is_a?(BNode) ? "rdf:nodeID" : "rdf:about") => s) do
             each_with_subject(s) do |triple|
               xml.tag!(triple.predicate.to_qname(uri_bindings), *triple.object.xml_args)
             end

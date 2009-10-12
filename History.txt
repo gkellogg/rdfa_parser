@@ -1,3 +1,8 @@
+=== 0.0.3 2009-10-12
+* Added --quiet option to executable
+* BNode RDF/XML output
+* Output all default namespaces in RDF/XML
+
 === 0.0.2 2009-10-10
 * Switch to jeweler from newgem/hoe
 * RdfaParser.new just creates parser, allowing a different graph to be substituted.
