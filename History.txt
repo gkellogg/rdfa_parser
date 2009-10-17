@@ -1,4 +1,8 @@
-=== 0.0.4 2009-10-18
+=== 0.0.5 2009-10-17
+* Fixed generation of RDF/XML for XML Literals.
+* Update Specs for style
+
+=== 0.0.4 2009-10-16
 * Fixed namespace bug in RDF/XML generation from Graph
 * Fixed URI generation from namespace, which failed when suffix was a defined method of Namespace (use ns + suffix)
 

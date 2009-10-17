@@ -14,7 +14,7 @@ begin
     gemspec.add_dependency('builder', '>= 2.1.2')
     gemspec.add_development_dependency('rspec')
     gemspec.add_development_dependency('activesupport', '>= 2.3.0')
-    gemspec.extra_rdoc_files     = %w(README.rdoc)
+    gemspec.extra_rdoc_files     = %w(README.rdoc History.txt)
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
@@ -47,6 +47,6 @@ Rake::RDocTask.new do |rdoc|
 
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title = "rdfa_parser #{version}"
-  rdoc.rdoc_files.include('README*')
+  rdoc.rdoc_files.include('README*', "History.txt")
   rdoc.rdoc_files.include('lib/**/*.rb')
 end

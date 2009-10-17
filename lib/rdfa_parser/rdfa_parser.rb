@@ -289,10 +289,9 @@ module RdfaParser
           # plain literal
           add_debug(element, "plain literal")
           current_object_literal = Literal.untyped(content || element.inner_text, language)
-        elsif (children_node_types != [Nokogiri::XML::Text]) and (type == nil or type_resource.to_s == XML_LITERAL.to_s)
+        elsif children_node_types != [Nokogiri::XML::Text] and (type == nil or type_resource.to_s == XML_LITERAL.to_s)
           # XML Literal
           add_debug(element, "XML Literal")
-          # SPEC CONFUSION: what is the associativity of 'and' and 'or'?
           # SPEC CONFUSION: does it have to be "rdf:XMLLiteral", or can it be another prefix? Maybe write the whole URI.
           current_object_literal = Literal.typed(element, XML_LITERAL, :language => language, :namespaces => uri_mappings)
           recurse = false

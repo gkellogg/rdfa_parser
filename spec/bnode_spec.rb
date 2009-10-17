@@ -1,37 +1,41 @@
 require File.join(File.dirname(__FILE__), 'spec_helper')
 describe "Blank nodes" do
-  it "should accept a custom identifier" do
-    b = BNode.new('foo')
-    b.identifier.should == "foo"
-    b.to_s.should == "foo"
-  end
-  
-  it "should reject custom identifiers if they are not acceptable" do
-    b = BNode.new("4cake")
-    b.identifier.should_not == "4cake"
-  end
-  
-  it "should be expressible in NT syntax" do
-    b = BNode.new('test')
-    b.to_ntriples.should == "_:test"
-  end
-  
-  it "should be able to determine equality" do
-    a = BNode.new('a')
-    a2 = BNode.new('a')
-    a.eql?(a2).should be_true
+  describe "which have custom identifiers" do
+    subject { BNode.new("foo") }
     
-    a3 = URIRef.new('http://somehost.com/wherever.xml')
-    a.eql?(a3).should be_false
+    it "should return identifier" do
+      subject.identifier.should == "foo"
+      subject.to_s.should == "foo"
+    end
+
+    it "should be rejected if they are not acceptable" do
+      b = BNode.new("4cake")
+      b.identifier.should_not == "4cake"
+    end
+
+    it "should be expressible in NT syntax" do
+      subject.to_ntriples.should == "_:foo"
+    end
+
+    it "should be able to determine equality" do
+      other = BNode.new(subject.to_s)
+      should == other
+    end
+
+    it "should be able to determine inequality" do
+      other = URIRef.new('http://somehost.com/wherever.xml')
+      should_not == other
+    end
+
+    it "should resource hash for RDF/XML named bnode" do
+      subject.xml_args.should == [{"rdf:nodeID" => subject.to_s}]
+    end
   end
   
-  it "should resource hash for RDF/XML named bnode" do
-    b = BNode.new("foo")
-    b.xml_args.should == [{"rdf:nodeID" => "foo"}]
-  end
-  
-  it "should resource hash for RDF/XML anonymous bnode" do
-    b = BNode.new
-    b.xml_args.should == [{"rdf:nodeID" => b.identifier}]
+  describe "which are anonymous" do
+    it "should resource hash for RDF/XML anonymous bnode" do
+      b = BNode.new
+      b.xml_args.should == [{"rdf:nodeID" => b.identifier}]
+    end
   end
 end

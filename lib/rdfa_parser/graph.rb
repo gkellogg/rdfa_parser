@@ -97,6 +97,7 @@ module RdfaParser
 
     # Dump model to RDF/XML
     def to_rdfxml
+      replace_text = {}
       rdfxml = ""
       xml = builder = Builder::XmlMarkup.new(:target => rdfxml, :indent => 2)
 
@@ -114,12 +115,22 @@ module RdfaParser
         subjects.each do |s|
           xml.rdf(:Description, (s.is_a?(BNode) ? "rdf:nodeID" : "rdf:about") => s) do
             each_with_subject(s) do |triple|
-              xml.tag!(triple.predicate.to_qname(uri_bindings), *triple.object.xml_args)
+              xml_args = triple.object.xml_args
+              if triple.object.is_a?(Literal) && triple.object.xmlliteral?
+                replace_text["__replace_with_#{triple.object.object_id}__"] = xml_args[0]
+                xml_args[0] = "__replace_with_#{triple.object.object_id}__"
+              end
+              xml.tag!(triple.predicate.to_qname(uri_bindings), *xml_args)
             end
           end
         end
       end
 
+      # Perform literal substitutions
+      replace_text.each_pair do |match, value|
+        rdfxml.sub!(match, value)
+      end
+      
       rdfxml
     end
     

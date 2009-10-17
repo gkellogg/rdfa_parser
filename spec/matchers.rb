@@ -25,8 +25,8 @@ module Matchers
       else
         "Graph entry count differs:\nexpected: #{@sorted_expected.length}\nactual:   #{@sorted_actual.length}"
       end +
-      "\n\n#{@info}" +
-      "\nUnsorted Expected:\n#{@expected.to_ntriples}" +
+      "\n\n#{@info + "\n" unless @info.empty?}" +
+      "Unsorted Expected:\n#{@expected.to_ntriples}" +
       "Unsorted Results:\n#{@actual.to_ntriples}"
     end
   end
@@ -56,7 +56,7 @@ module Matchers
       end
     end
     def failure_message_for_should
-      @info + ":\n" +
+      "#{@info + "\n" unless @info.empty?}" +
       if @results.nil?
         "Query failed to return results"
       elsif !@results.is_boolean?
@@ -71,5 +71,64 @@ module Matchers
 
   def pass_query(expected, info = "")
     PassQuery.new(expected, info)
+  end
+
+  class BeValidXML
+    def initialize(info)
+      @info = info
+    end
+    def matches?(actual)
+      @actual = actual
+      @doc = Nokogiri::XML.parse(actual)
+      @results = @doc.validate
+      @results.nil?
+    rescue
+      false
+    end
+    def failure_message_for_should
+      "#{@info + "\n" unless @info.empty?}" +
+      if @doc.nil?
+        "did not parse"
+      else
+        "\n#{@results}" +
+        "\nParsed:\n#{@doc}"
+      end   +
+        "\nActual:\n#{@actual}"
+    end
+  end
+  
+  def be_valid_xml(info = "")
+    BeValidXML.new(info)
+  end
+
+  class BeEquivalentXML
+    def initialize(expected, info)
+      @expected = expected
+      @info = info
+    end
+    
+    def matches?(actual)
+      @actual = actual
+
+      a = "<foo>#{@actual}</foo>" unless @actual.index("<") == 0
+      e = "<foo>#{@expected}</foo>" unless @actual.index("<") == 0
+      a_hash = ActiveSupport::XmlMini.parse(a)
+      e_hash = ActiveSupport::XmlMini.parse(e)
+      a_hash == e_hash
+    rescue
+      @fault = $!.message
+      false
+    end
+
+    def failure_message_for_should
+      "#{@info + "\n" unless @info.empty?}" +
+      "#{@fault + "\n" unless @fault.nil?}" +
+      "Expected:\n#{@expected}\n" +
+      "Actual:#{@actual}"
+    end
+  end
+  
+  def be_equivalent_xml(expected, info = "")
+    BeEquivalentXML.new(expected, info)
   end
 end

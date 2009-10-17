@@ -42,7 +42,7 @@ describe "URI References" do
     URIRef.new("foo", "http://example.org").should == "http://example.org/foo"
   end
   
-  it "produce a valid URI character sequence (per RFC 2396 §2.1) representing an absolute URI with optional fragment identifier" do
+  it "should produce a valid URI character sequence (per RFC 2396 §2.1) representing an absolute URI with optional fragment identifier" do
     pending "TODO: figure out a series of tests for RFC 2396 §2.1 adherence"
   end
   
