@@ -74,11 +74,18 @@ describe "URI References" do
   it "should create QName from URI with namespace" do
     uri = URIRef.new("http://example.org/foo#bar")
     uri.to_qname("http://example.org/foo#" => "ex").should == "ex:bar"
+    
+    uri = URIRef.new("http://xmlns.com/foaf/0.1/knows")
+    uri.to_qname("http://xmlns.com/foaf/0.1/" => "foaf").should == "foaf:knows"
   end
   
   it "should create resource hash for RDF/XML" do
     uri = URIRef.new("http://example.org/foo#bar")
     uri.xml_args.should == [{"rdf:resource" => uri.to_s}]
+  end
+  
+  it "should be equivalent to string" do
+    URIRef.new("http://example.org/foo#bar").should == "http://example.org/foo#bar"
   end
   
 #   TEST turned off until parser is working.  

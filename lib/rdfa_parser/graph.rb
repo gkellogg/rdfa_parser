@@ -99,17 +99,15 @@ module RdfaParser
     def to_rdfxml
       rdfxml = ""
       xml = builder = Builder::XmlMarkup.new(:target => rdfxml, :indent => 2)
-      rdf_attrs = nsbinding.values.inject({}) { |hash, ns| hash.merge(ns.xmlns_attr => ns.uri.to_s)}
-      rdf_attrs = {
-        "xmlns::rdf"  => "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-        "xmlns:rdfs"  => "http://www.w3.org/2000/01/rdf-schema#",
-        "xmlns:xhv"   => "http://www.w3.org/1999/xhtml/vocab#",
-        "xmlns:xml"   => "http://www.w3.org/XML/1998/namespace",
-      }.merge(rdf_attrs)
-      
-      # Create reverse map of namespaces for easy lookup
-      uri_bindings = rdf_attrs.invert
-      
+
+      extended_bindings = nsbinding.merge(
+        "rdf"   => Namespace.new("http://www.w3.org/1999/02/22-rdf-syntax-ns#", "rdf"),
+        "rdfs"  => Namespace.new("http://www.w3.org/2000/01/rdf-schema#", "rdfs"),
+        "xhv"   => Namespace.new("http://www.w3.org/1999/xhtml/vocab#", "xhv"),
+        "xml"   => Namespace.new("http://www.w3.org/XML/1998/namespace", "xml")
+      )
+      rdf_attrs = extended_bindings.values.inject({}) { |hash, ns| hash.merge(ns.xmlns_attr => ns.uri.to_s)}
+      uri_bindings = extended_bindings.values.inject({}) { |hash, ns| hash.merge(ns.uri.to_s => ns.short)}
       xml.instruct!
       xml.rdf(:RDF, rdf_attrs) do
         # Add statements for each subject

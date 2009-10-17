@@ -30,7 +30,7 @@ describe "Graphs" do
     f << Triple.new(ex.john, foaf.knows, ex.jane)
     f << Triple.new(ex.john, foaf.knows, ex.rick)
     f << Triple.new(ex.jane, foaf.knows, ex.rick)
-    f.subjects.should == [ex.john.uri, ex.jane.uri]
+    f.subjects.should == [ex.john.uri.to_s, ex.jane.uri.to_s]
   end
   
   it "should return bnode subjects" do
@@ -59,7 +59,7 @@ describe "Graphs" do
     it "should output RDF/XML" do
       rdfxml = <<HERE
 <?xml version="1.0" encoding="UTF-8"?>
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xhv="http://www.w3.org/1999/xhtml/vocab#">
   <rdf:Description rdf:about="http://example.org/john">
     <foaf:knows rdf:resource="http://example.org/jane"/>
   </rdf:Description>

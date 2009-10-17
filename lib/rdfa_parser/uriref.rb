@@ -31,11 +31,7 @@ module RdfaParser
     end
     
     def + (input)
-      if input.class == String
-        input_uri = Addressable::URI.parse(input)
-      else
-        input_uri = Addressable::URI.parse(input.to_s)
-      end
+      input_uri = Addressable::URI.parse(input.to_s)
       return URIRef.new(input_uri, self.to_s)
     end
     
@@ -50,10 +46,7 @@ module RdfaParser
     end
   
     def == (other)
-      case other
-      when URIRef   then @uri == other.uri
-      else               @uri.to_s == other.to_s
-      end
+      @uri.to_s == other.to_s
     end
   
     def to_s

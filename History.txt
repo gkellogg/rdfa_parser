@@ -1,8 +1,11 @@
+=== 0.0.4 2009-10-18
+* Fixed namespace bug in RDF/XML generation from Graph
+* Fixed URI generation from namespace, which failed when suffix was a defined method of Namespace (use ns + suffix)
+
 === 0.0.3 2009-10-12
 * Added --quiet option to executable
 * BNode RDF/XML output
 * Output all default namespaces in RDF/XML
-
 === 0.0.2 2009-10-10
 * Switch to jeweler from newgem/hoe
 * RdfaParser.new just creates parser, allowing a different graph to be substituted.

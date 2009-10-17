@@ -41,4 +41,22 @@ describe "Namespace" do
       foaf.bind("cheese")
     end.should raise_error
   end
+  
+  describe "URI construction" do
+    before(:all) { @foaf = Namespace.new("http://xmlns.com/foaf/0.1/", "foaf") }
+    it "should construct URI" do
+      @foaf.foo.class.should == URIRef
+      @foaf.foo.should == "http://xmlns.com/foaf/0.1/foo"
+    end
+    
+    it "should construct URI with +" do
+      (@foaf + "foo").class.should == URIRef
+      (@foaf + "foo").should == "http://xmlns.com/foaf/0.1/foo"
+    end
+    
+    it "will cause method conflict" do
+      (@foaf + "class").should == "http://xmlns.com/foaf/0.1/class"
+      @foaf.class.should ==  Namespace
+    end
+  end
 end

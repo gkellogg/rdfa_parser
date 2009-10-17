@@ -378,12 +378,7 @@ module RdfaParser
       else
         ns = uri_mappings[prefix.to_s]
         raise ParserException, "No namespace mapping for #{prefix}" unless ns
-        # Wierd send error, sending ns.send("sub") raises "TypeError: $_ value need to be String"
-        case suffix.to_s
-        when "sub"  then ns.sub
-        when ""     then ns.uri
-        else             ns.send(suffix.to_s)
-        end
+        ns + suffix
       end
     end
 

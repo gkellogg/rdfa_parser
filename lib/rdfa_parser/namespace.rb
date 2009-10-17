@@ -50,11 +50,12 @@ module RdfaParser
     # @author Tom Morris, Pius Uzamere
 
     def method_missing(methodname, *args)
-      unless fragment
-        URIRef.new(methodname.to_s, @uri)
-      else
-        URIRef.new("##{methodname}", @uri)
-      end
+      self + methodname
+    end
+
+    # Construct a URIRef from a namespace as in method_missing, but without method collision issues
+    def +(suffix)
+      URIRef.new((fragment ? "##{suffix}" : suffix.to_s), @uri)
     end
 
     def bind(graph)
