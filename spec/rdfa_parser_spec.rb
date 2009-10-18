@@ -53,7 +53,7 @@ describe "RDFa parser" do
     xml.should be_valid_xml
     
     # Ensure that enclosed literal is also valid
-    xml.should include("E = mc<sup xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\">2</sup>: The Most Urgent Problem of Our Time")
+    xml.should include("E = mc<sup xmlns:dc=\"http://purl.org/dc/elements/1.1/\" xmlns=\"http://www.w3.org/1999/xhtml\">2</sup>: The Most Urgent Problem of Our Time")
   end
 
 
@@ -95,7 +95,7 @@ describe "RDFa parser" do
     end
 
     test_cases.each do |t|
-      #next unless t.name == "Test0101"
+      #next unless t.name == "Test0103"
       specify "test #{t.name}: #{t.title}" do
         rdfa_string = File.read(t.informationResourceInput)
         rdfa_parser = RdfaParser::RdfaParser.new

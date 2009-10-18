@@ -293,7 +293,7 @@ module RdfaParser
           # XML Literal
           add_debug(element, "XML Literal")
           # SPEC CONFUSION: does it have to be "rdf:XMLLiteral", or can it be another prefix? Maybe write the whole URI.
-          current_object_literal = Literal.typed(element, XML_LITERAL, :language => language, :namespaces => uri_mappings)
+          current_object_literal = Literal.typed(element.children, XML_LITERAL, :language => language, :namespaces => uri_mappings)
           recurse = false
         end
       

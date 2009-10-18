@@ -232,20 +232,28 @@ module RdfaParser
         "\"#{c_style(content)}\"^^<#{value}>"
       end
 
+      def format_as_trix(content, lang)
+        "<typedLiteral datatype=\"#{@value}\">#{content}</typedLiteral>"
+      end
+
       def xml_args(content, lang)
         hash = {"rdf:parseType" => "Literal"}
-        hash["xml:lang"] = lang if lang
         [content, hash]
       end
 
       # Map namespaces from context to each top-level element found within snippet
       def encode_contents(contents, options)
-        contents = Nokogiri::XML::Document.parse("<foo>#{contents}</foo>").root if contents.is_a?(String)
+        ns_hash = options[:namespaces].values.inject({}) {|h, ns| h.merge(ns.xmlns_hash)}
+        ns_strs = []
+        ns_hash.each_pair {|a, u| ns_strs << "#{a}=\"#{u}\""}
+        
+        # Add inherited namespaces to created root element so that they're inherited to sub-elements
+        contents = Nokogiri::XML::Document.parse("<foo #{ns_strs.join(" ")}>#{contents}</foo>").root
         @contents = contents.children.map do |c|
           if c.is_a?(Nokogiri::XML::Element)
-            options[:namespaces].values.each do |ns|
-              c[ns.xmlns_attr] = ns.uri.to_s
-              #puts ns.inspect
+            ns_hash.each_pair { |a, u| c[a] = u unless c.namespaces[a]}
+            if options[:language] && c["lang"].to_s.empty?
+              c["xml:lang"] = options[:language]
             end
           end
           c.to_s
@@ -291,7 +299,7 @@ module RdfaParser
         raise TypeError, "#{encoding.inspect} should be an instance of Encoding"
       end
       @encoding = encoding
-      lang = options.delete(:language)
+      lang = options[:language]
       @lang = Language.new(lang) if lang
       options = {:namespaces => {}}.merge(options)
 

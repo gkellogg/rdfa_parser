@@ -4,6 +4,10 @@
 * Add eql? and hash methods to BNode and URIRef to allow for uniq
 * Added test based on 0017 to find BNode XML output problems.
 * Allow empty BNodes to be considered to be named
+* Add xml:lang to XMLLiterals as necessary
+* Don't add existing namespace definition to XML Literal
+* Special output for XML Literal to treat xml:lang within string. Add on create.
+* Added Namespace#xmlns_hash
 
 === 0.0.4 2009-10-16
 * Fixed namespace bug in RDF/XML generation from Graph

@@ -71,6 +71,10 @@ module RdfaParser
       short.nil? ? "xmlns" : "xmlns:#{short}"
     end
     
+    def xmlns_hash
+      {xmlns_attr => @uri.to_s}
+    end
+    
     def inspect
       "Namespace[abbr='#{short}',uri='#{uri}']"
     end
