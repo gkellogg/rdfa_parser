@@ -23,8 +23,13 @@ module RdfaParser
     start top up
   )
 
-  RDF_TYPE = URIRef.new("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")
+  RDF_TYPE    = URIRef.new("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")
   XML_LITERAL = Literal::Encoding.xmlliteral
 
-  XH_MAPPING = {"" => Namespace.new("http://www.w3.org/1999/xhtml/vocab\#", nil)}
+  RDF_NS      = Namespace.new("http://www.w3.org/1999/02/22-rdf-syntax-ns#", "rdf")
+  RDFS_NS     = Namespace.new("http://www.w3.org/2000/01/rdf-schema#", "rdfs")
+  XHV_NS      = Namespace.new("http://www.w3.org/1999/xhtml/vocab#", "xhv")
+  XML_NS      = Namespace.new("http://www.w3.org/XML/1998/namespace", "xml")
+
+  XH_MAPPING  = {"" => Namespace.new("http://www.w3.org/1999/xhtml/vocab\#", nil)}
 end

@@ -249,6 +249,7 @@ module RdfaParser
         
         # Add inherited namespaces to created root element so that they're inherited to sub-elements
         contents = Nokogiri::XML::Document.parse("<foo #{ns_strs.join(" ")}>#{contents}</foo>").root
+
         @contents = contents.children.map do |c|
           if c.is_a?(Nokogiri::XML::Element)
             ns_hash.each_pair { |a, u| c[a] = u unless c.namespaces[a]}

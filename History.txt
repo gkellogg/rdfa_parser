@@ -8,6 +8,8 @@
 * Don't add existing namespace definition to XML Literal
 * Special output for XML Literal to treat xml:lang within string. Add on create.
 * Added Namespace#xmlns_hash
+* Use XML Parser, not HTML (this should probably vary on doc type). HTML parser was removing namespace declarations from XMLLiterals.
+* Added _profile_ option to RdfaParser#parse to set parsetype to xhtml1, html4, or html5. Right now only xhtml1 is used.
 
 === 0.0.4 2009-10-16
 * Fixed namespace bug in RDF/XML generation from Graph

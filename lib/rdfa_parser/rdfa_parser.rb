@@ -13,6 +13,7 @@ module RdfaParser
   class RdfaParser
     attr_reader :debug
     attr_reader :graph
+    attr_reader :namespace
 
     # The Recursive Baggage
     class EvaluationContext # :nodoc: all
@@ -61,20 +62,32 @@ module RdfaParser
     # Parse XHRML+RDFa document from a string or input stream to closure or graph.
     # _base_ indicates the base URI of the document.
     #
-    # Optionally, the stream may be a Nokogiri::HTML::Document
+    # Optionally, the stream may be a Nokogiri::HTML::Document or Nokogiri::XML::Document
     # With a block, yeilds each statement with URIRef, BNode or Literal elements
     #
+    # The namespace for the HTML is intuited from the encoding. This code supports the following
+    # XHTML1:: http://www.w3.org/1999/xhtml This can also be determined by <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+    # HTML4::
+    # HTML5::
+    # Options:
+    # profile:: One of _xhtml1_, _html4_, or _html5_ to override intuition
+    # 
     # Raises RdfaParser::RdfaException or subclass
-    def parse(stream, base, &block) # :yields: triple
+    def parse(stream, base, options = {}, &block) # :yields: triple
       @doc = case stream
       when Nokogiri::HTML::Document then stream
       when Nokogiri::XML::Document then stream
-      else   Nokogiri::HTML.parse(stream, base)
+      else   Nokogiri::XML.parse(stream, base)
       end
       @base = base.to_s
       raise ParserException, "Empty document" if @doc.nil?
       @callback = block
 
+      # If the doc has a default, use that as "html"
+      ns = @doc.namespaces["xmlns"]
+      ns ||= "http://www.w3.org/1999/xhtml" # FIXME: intuite from DOCTYPE, or however
+      @namespace = Namespace.new(ns, "html") if ns
+      
       # parse
       parse_whole_document(@doc, @base)
 
@@ -98,11 +111,12 @@ module RdfaParser
     # Parsing an RDFa document (this is *not* the recursive method)
     def parse_whole_document(doc, base)
       # find if the document has a base element
-      base_el = doc.xpath('//head/base').first
+      base_el = doc.xpath('/html:html/html:head/html:base', @namespace.xmlns_hash).first
       if (base_el)
         base = base_el.attributes['href']
         # Strip any fragment from base
         base = base.to_s.split("#").first
+        add_debug(base_el, "parse_whole_doc: base='#{base}'")
       end
 
       # initialize the evaluation context with the appropriate base
@@ -116,17 +130,22 @@ module RdfaParser
       mappings = {}
     
       # look for xmlns
-      element.attributes.each do |attr_name,attr_value|
+      element.namespaces.each do |attr_name,attr_value|
         abbr, suffix = attr_name.split(":")
         mappings[suffix] = @graph.namespace(attr_value, suffix) if abbr == "xmlns"
       end
-    
+
+      add_debug(element, "mappings: #{mappings.keys.join(", ")}")
       mappings
     end
 
+    def node_path(node)
+      node.is_a?(Nokogiri::XML::Element) ? "#{node_path(node.parent)}/#{node.name}" : ""
+    end
+    
     def add_debug(node, message)
-      puts "#{node.path}: #{message}" if $DEBUG
-      @debug << "#{node.path}: #{message}"
+      puts "#{node_path(node)}: #{message}" if $DEBUG
+      @debug << "#{node_path(node)}: #{message}"
     end
 
     # The recursive helper function
@@ -165,13 +184,15 @@ module RdfaParser
       uri_mappings.merge!(extract_mappings(element))
     
       # Language information [5.5 Step 3]
-      language = attrs['xml:lang'] || language
+      add_debug(element, "traverse, lang: #{attrs['lang']}") if attrs['lang']
+      language = attrs['lang'] || language
     
       # rels and revs
       rels = parse_curies(rel, uri_mappings, evaluation_context.base, true)
       revs = parse_curies(rev, uri_mappings, evaluation_context.base, true)
       valid_rel_or_rev = !(rel.nil? && rev.nil?)
     
+      add_debug(element, "traverse, ec: #{evaluation_context.inspect}")
       add_debug(element, "traverse, about: #{about.nil? ? 'nil' : about}, src: #{src.nil? ? 'nil' : src}, resource: #{resource.nil? ? 'nil' : resource}, href: #{href.nil? ? 'nil' : href}")
       add_debug(element, "traverse, property: #{property.nil? ? 'nil' : property}, typeof: #{typeof.nil? ? 'nil' : typeof}, datatype: #{datatype.nil? ? 'nil' : datatype}, content: #{content.nil? ? 'nil' : content}")
       add_debug(element, "traverse, rels: #{rels.join(" ")}, revs: #{revs.join(" ")}")

@@ -102,10 +102,10 @@ module RdfaParser
       xml = builder = Builder::XmlMarkup.new(:target => rdfxml, :indent => 2)
 
       extended_bindings = nsbinding.merge(
-        "rdf"   => Namespace.new("http://www.w3.org/1999/02/22-rdf-syntax-ns#", "rdf"),
-        "rdfs"  => Namespace.new("http://www.w3.org/2000/01/rdf-schema#", "rdfs"),
-        "xhv"   => Namespace.new("http://www.w3.org/1999/xhtml/vocab#", "xhv"),
-        "xml"   => Namespace.new("http://www.w3.org/XML/1998/namespace", "xml")
+        "rdf"   => RDF_NS,
+        "rdfs"  => RDFS_NS,
+        "xhv"   => XHV_NS,
+        "xml"   => XML_NS
       )
       rdf_attrs = extended_bindings.values.inject({}) { |hash, ns| hash.merge(ns.xmlns_attr => ns.uri.to_s)}
       uri_bindings = extended_bindings.values.inject({}) { |hash, ns| hash.merge(ns.uri.to_s => ns.short)}
