@@ -75,6 +75,9 @@ module RdfaParser
     end
     alias_method :==, :eql?
     
+    # Needed for uniq
+    def hash; to_s.hash; end
+    
     # Start _identifier_ sequence from scratch
     def self.reset(init = "a")
       @@next_generated = init

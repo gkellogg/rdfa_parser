@@ -45,9 +45,13 @@ module RdfaParser
       end
     end
   
-    def == (other)
+    def eql?(other)
       @uri.to_s == other.to_s
     end
+    alias_method :==, :eql?
+  
+    # Needed for uniq
+    def hash; to_s.hash; end
   
     def to_s
       @uri.to_s

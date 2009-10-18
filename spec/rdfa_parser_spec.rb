@@ -56,6 +56,37 @@ describe "RDFa parser" do
     xml.should include("E = mc<sup xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\">2</sup>: The Most Urgent Problem of Our Time")
   end
 
+
+  it "should parse BNodes" do
+    sampledoc = <<-EOF
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:foaf="http://xmlns.com/foaf/0.1/">
+      <head>
+    	<title>Test 0017</title>   
+      </head>
+      <body>
+      	 <p>
+              <span about="[_:a]" property="foaf:name">Manu Sporny</span>
+               <span about="[_:a]" rel="foaf:knows"
+    resource="[_:b]">knows</span>
+               <span about="[_:b]" property="foaf:name">Ralph Swick</span>.
+            </p>
+      </body>
+    </html>
+    EOF
+
+    parser = RdfaParser::RdfaParser.new
+    parser.parse(sampledoc, "http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/0011.xhtml")
+    parser.graph.size.should == 3
+    
+    xml = parser.graph.to_rdfxml
+    xml.should be_valid_xml
+    
+    xml.should include("Ralph Swick")
+    xml.should include("Manu Sporny")
+  end
   # W3C Test suite from http://www.w3.org/2006/07/SWD/RDFa/testsuite/
   describe "w3c xhtml1 testcases" do
     def self.test_cases

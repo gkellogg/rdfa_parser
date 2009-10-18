@@ -32,7 +32,7 @@ describe "Graphs" do
   it "should return bnode subjects" do
     bn = BNode.new
     subject.add_triple bn, URIRef.new("http://xmlns.com/foaf/0.1/knows"), BNode.new
-    subject.subjects.should == [bn.to_s]
+    subject.subjects.should == [bn]
   end
   
   it "should be able to determine whether or not it has existing BNodes" do
@@ -100,6 +100,38 @@ describe "Graphs" do
 </rdf:RDF>
 HERE
       subject.to_rdfxml.should include("E = mc<sup xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:dc=\"http://purl.org/dc/elements/1.1/\">2</sup>: The Most Urgent Problem of Our Time")
+    end
+  end
+  
+  describe "with bnodes" do
+    subject {
+      a = BNode.new("a")
+      b = BNode.new("b")
+      
+      g = Graph.new
+      g << Triple.new(a, @foaf.name, Literal.untyped("Manu Sporny"))
+      g << Triple.new(a, @foaf.knows, b)
+      g << Triple.new(b, @foaf.name, Literal.untyped("Ralph Swick"))
+      g.bind(@foaf)
+      g
+    }
+    
+    it "should output RDF/XML" do
+      rdfxml = <<-HERE
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xhv="http://www.w3.org/1999/xhtml/vocab#">
+  <rdf:Description rdf:nodeID="a">
+    <foaf:name>Manu Sporny</foaf:name>
+    <foaf:knows rdf:nodeID="b"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="b">
+    <foaf:name>Ralph Swick</foaf:name>
+  </rdf:Description>
+</rdf:RDF>
+HERE
+      xml = subject.to_rdfxml
+      xml.should include("Ralph Swick")
+      xml.should include("Manu Sporny")
     end
   end
   

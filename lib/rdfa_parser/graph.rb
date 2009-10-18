@@ -21,7 +21,7 @@ module RdfaParser
     end
     
     def subjects
-      @triples.map {|t| t.subject.to_s}.uniq
+      @triples.map {|t| t.subject}.uniq
     end
     
     def [] (item)
