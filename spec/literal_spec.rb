@@ -189,11 +189,30 @@ describe "Literals: " do
       
       describe "and namespaced element" do
         subject {
-          Literal.typed("<svg:svg/>",
+          root = Nokogiri::XML.parse(%(
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+          <html xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:dc="http://purl.org/dc/elements/1.1/"
+          	  xmlns:ex="http://example.org/rdf/"
+          	  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+          	  xmlns:svg="http://www.w3.org/2000/svg">
+          	<head profile="http://www.w3.org/1999/xhtml/vocab http://www.w3.org/2005/10/profile">
+          		<title>Test 0100</title>
+          	</head>
+            <body>
+            	<div about="http://www.example.org">
+                <h2 property="ex:example" datatype="rdf:XMLLiteral"><svg:svg/></h2>
+          	</div>
+            </body>
+          </html>
+          ), nil, nil, Nokogiri::XML::ParseOptions::DEFAULT_XML).root
+          content = root.css("h2").children
+          Literal.typed(content,
                         "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral",
                         :namespaces => {"svg" => Namespace.new("http://www.w3.org/2000/svg", "svg")})
         }
-        it "should return xml_args" do subject.xml_args.should == ["<svg:svg xmlns:svg=\"http://www.w3.org/2000/svg\"/>", {"rdf:parseType" => "Literal"}] end
+        it "should return xml_args" do subject.xml_args.should == ["<svg:svg xmlns:svg=\"http://www.w3.org/2000/svg\"></svg:svg>", {"rdf:parseType" => "Literal"}] end
       end
       
       describe "and existing namespace definition" do
@@ -202,7 +221,7 @@ describe "Literals: " do
                         "http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral",
                         :namespaces => {"svg" => Namespace.new("http://www.w3.org/2000/svg", "svg")})
         }
-        it "should return xml_args" do subject.xml_args.should == ["<svg:svg xmlns:svg=\"http://www.w3.org/2000/svg\"/>", {"rdf:parseType" => "Literal"}] end
+        it "should return xml_args" do subject.xml_args.should == ["<svg:svg xmlns:svg=\"http://www.w3.org/2000/svg\"></svg:svg>", {"rdf:parseType" => "Literal"}] end
       end
     end
       

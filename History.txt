@@ -10,6 +10,8 @@
 * Added Namespace#xmlns_hash
 * Use XML Parser, not HTML (this should probably vary on doc type). HTML parser was removing namespace declarations from XMLLiterals.
 * Added _profile_ option to RdfaParser#parse to set parsetype to xhtml1, html4, or html5. Right now only xhtml1 is used.
+* Use to_html when re-serializing XMLLiterals, whitespace was being destroid otherwise.
+* All specs pass!
 
 === 0.0.4 2009-10-16
 * Fixed namespace bug in RDF/XML generation from Graph

@@ -257,7 +257,7 @@ module RdfaParser
               c["xml:lang"] = options[:language]
             end
           end
-          c.to_s
+          c.to_html
         end.join("")
       end
 

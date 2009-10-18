@@ -95,7 +95,7 @@ describe "RDFa parser" do
     end
 
     test_cases.each do |t|
-      #next unless t.name == "Test0105"
+      #next unless t.name == "Test0100"
       specify "test #{t.name}: #{t.title}" do
         rdfa_string = File.read(t.informationResourceInput)
         rdfa_parser = RdfaParser::RdfaParser.new
@@ -103,7 +103,7 @@ describe "RDFa parser" do
 
         query_string = t.informationResourceResults ? File.read(t.informationResourceResults) : ""
 
-        if query_string.match(/UNION/)
+        if query_string.match(/UNION|OPTIONAL/)
           # Check triples, as Rasql doesn't implement UNION
           ntriples = File.read(t.informationResourceResults.sub("sparql", "nt"))
           parser = NTriplesParser.new(ntriples)

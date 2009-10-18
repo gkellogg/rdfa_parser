@@ -312,9 +312,8 @@ module RdfaParser
           current_object_literal = Literal.untyped(content || element.inner_text, language)
         elsif children_node_types != [Nokogiri::XML::Text] and (type == nil or type_resource.to_s == XML_LITERAL.to_s)
           # XML Literal
-          add_debug(element, "XML Literal")
-          # SPEC CONFUSION: does it have to be "rdf:XMLLiteral", or can it be another prefix? Maybe write the whole URI.
-          current_object_literal = Literal.typed(element.children, XML_LITERAL, :language => language, :namespaces => uri_mappings)
+          add_debug(element, "XML Literal: #{element.inner_html}")
+          current_object_literal = Literal.typed(element.inner_html, XML_LITERAL, :language => language, :namespaces => uri_mappings)
           recurse = false
         end
       
