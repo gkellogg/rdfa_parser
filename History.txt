@@ -1,6 +1,9 @@
 === 0.0.5 2009-10-17
 * Fixed generation of RDF/XML for XML Literals.
 * Update Specs for style
+* Add eql? and hash methods to BNode and URIRef to allow for uniq
+* Added test based on 0017 to find BNode XML output problems.
+* Allow empty BNodes to be considered to be named
 
 === 0.0.4 2009-10-16
 * Fixed namespace bug in RDF/XML generation from Graph

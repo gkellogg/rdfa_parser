@@ -32,6 +32,16 @@ describe "Blank nodes" do
     end
   end
   
+  describe "which has a blank identifier" do
+    subject { BNode.new("") }
+    it "should not be the same as an anonymous identifier" do should_not == BNode.new end
+    it "should be the same as nother blank identifier" do should == BNode.new("") end
+  end
+  
+  it "should create a single BNode for a blank identifier" do
+    BNode.new("").should_not == BNode
+  end
+  
   describe "which are anonymous" do
     it "should resource hash for RDF/XML anonymous bnode" do
       b = BNode.new

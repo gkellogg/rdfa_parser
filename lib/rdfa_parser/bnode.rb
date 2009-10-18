@@ -86,7 +86,7 @@ module RdfaParser
 
     protected
     def valid_id?(name)
-      name =~ /^[a-zA-Z_][a-zA-Z0-9]*$/
+      name =~ /^[a-zA-Z_][a-zA-Z0-9]*$/ || name.empty?
     end
   end
 end

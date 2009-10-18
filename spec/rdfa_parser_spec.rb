@@ -87,6 +87,7 @@ describe "RDFa parser" do
     xml.should include("Ralph Swick")
     xml.should include("Manu Sporny")
   end
+  
   # W3C Test suite from http://www.w3.org/2006/07/SWD/RDFa/testsuite/
   describe "w3c xhtml1 testcases" do
     def self.test_cases
