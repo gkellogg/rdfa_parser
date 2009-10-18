@@ -1,0 +1,1510 @@
+<rdf:RDF xmlns:earl="http://www.w3.org/ns/earl#"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:foaf="http://xmlns.com/foaf/0.1/">
+
+<earl:Software rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness">
+ <dc:title>Crazy Ivan</dc:title>
+ <dc:description>The W3C RDFa Test Harness</dc:description>
+ <foaf:homepage rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness" />
+</earl:Software>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0001">
+ <dc:title>Test Case #1</dc:title>
+ <dc:description>Predicate establishment with @property</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-1">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0001"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0006">
+ <dc:title>Test Case #6</dc:title>
+ <dc:description>@rel and @rev</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-6">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0006"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0007">
+ <dc:title>Test Case #7</dc:title>
+ <dc:description>@rel, @rev, @property, @content</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-7">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0007"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0008">
+ <dc:title>Test Case #8</dc:title>
+ <dc:description>empty string @about</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-8">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0008"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0009">
+ <dc:title>Test Case #9</dc:title>
+ <dc:description>@rev</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-9">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0009"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0010">
+ <dc:title>Test Case #10</dc:title>
+ <dc:description>@rel, @rev, @href</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-10">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0010"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0011">
+ <dc:title>Test Case #11</dc:title>
+ <dc:description>XMLLiteral</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-11">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0011"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0012">
+ <dc:title>Test Case #12</dc:title>
+ <dc:description>@xml:lang</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-12">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0012"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0013">
+ <dc:title>Test Case #13</dc:title>
+ <dc:description>@xml:lang inheritance</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-13">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0013"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0014">
+ <dc:title>Test Case #14</dc:title>
+ <dc:description>@datatype, xsd:integer</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-14">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0014"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0015">
+ <dc:title>Test Case #15</dc:title>
+ <dc:description>meta and link</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-15">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0015"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0017">
+ <dc:title>Test Case #17</dc:title>
+ <dc:description>Related blanknodes</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-17">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0017"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0018">
+ <dc:title>Test Case #18</dc:title>
+ <dc:description>@rel for predicate</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-18">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0018"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0019">
+ <dc:title>Test Case #19</dc:title>
+ <dc:description>@about for subject</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-19">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0019"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0020">
+ <dc:title>Test Case #20</dc:title>
+ <dc:description>Inheriting @about for subject</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-20">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0020"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0021">
+ <dc:title>Test Case #21</dc:title>
+ <dc:description>Subject inheritance with no @about</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-21">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0021"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0023">
+ <dc:title>Test Case #23</dc:title>
+ <dc:description>@id does not generate subjects</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-23">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0023"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0025">
+ <dc:title>Test Case #25</dc:title>
+ <dc:description>simple chaining test</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-25">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0025"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0026">
+ <dc:title>Test Case #26</dc:title>
+ <dc:description>@content</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-26">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0026"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0027">
+ <dc:title>Test Case #27</dc:title>
+ <dc:description>@content, ignore element content</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-27">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0027"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0029">
+ <dc:title>Test Case #29</dc:title>
+ <dc:description>markup stripping with @datatype</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-29">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0029"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0030">
+ <dc:title>Test Case #30</dc:title>
+ <dc:description>omitted @about</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-30">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0030"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0031">
+ <dc:title>Test Case #31</dc:title>
+ <dc:description>simple @resource</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-31">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0031"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0032">
+ <dc:title>Test Case #32</dc:title>
+ <dc:description>@resource overrides @href</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-32">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0032"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0033">
+ <dc:title>Test Case #33</dc:title>
+ <dc:description>simple chaining test with bNode</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-33">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0033"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0034">
+ <dc:title>Test Case #34</dc:title>
+ <dc:description>simple img[@src] test</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-34">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0034"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0035">
+ <dc:title>Test Case #35</dc:title>
+ <dc:description>@src/@href test</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-35">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0035"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0036">
+ <dc:title>Test Case #36</dc:title>
+ <dc:description>@src/@resource test</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-36">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0036"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0037">
+ <dc:title>Test Case #37</dc:title>
+ <dc:description>@src/@href/@resource test</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-37">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0037"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0038">
+ <dc:title>Test Case #38</dc:title>
+ <dc:description>@rev - img[@src] test</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-38">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0038"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0039">
+ <dc:title>Test Case #39</dc:title>
+ <dc:description>@rev - @src/@href test</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-39">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0039"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0040">
+ <dc:title>Test Case #40</dc:title>
+ <dc:description>@rev - @src/@resource test</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-40">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0040"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0041">
+ <dc:title>Test Case #41</dc:title>
+ <dc:description>@rev - @src/@href/@resource test</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-41">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0041"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0042">
+ <dc:title>Test Case #42</dc:title>
+ <dc:description>img[@src] test with omitted @about</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-42">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0042"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0046">
+ <dc:title>Test Case #46</dc:title>
+ <dc:description>@typeof with @rel present, no @href, @resource, or @about</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-46">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0046"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0047">
+ <dc:title>Test Case #47</dc:title>
+ <dc:description>@typeof with @rel and @resource present, no @about</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-47">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0047"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0048">
+ <dc:title>Test Case #48</dc:title>
+ <dc:description>@typeof with @about and @rel present, no @resource</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-48">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0048"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0049">
+ <dc:title>Test Case #49</dc:title>
+ <dc:description>@typeof with @about, no @rel or @resource</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-49">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0049"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0050">
+ <dc:title>Test Case #50</dc:title>
+ <dc:description>@typeof without anything else</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-50">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0050"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0051">
+ <dc:title>Test Case #51</dc:title>
+ <dc:description>@typeof with a single @property</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-51">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0051"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0052">
+ <dc:title>Test Case #52</dc:title>
+ <dc:description>@typeof with @resource and nothing else</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-52">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0052"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0053">
+ <dc:title>Test Case #53</dc:title>
+ <dc:description>@typeof with @resource and nothing else, with a subelement</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-53">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0053"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0054">
+ <dc:title>Test Case #54</dc:title>
+ <dc:description>multiple @property</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-54">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0054"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0055">
+ <dc:title>Test Case #55</dc:title>
+ <dc:description>multiple @rel</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-55">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0055"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0056">
+ <dc:title>Test Case #56</dc:title>
+ <dc:description>@typeof applies to @about on same element with hanging rel</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-56">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0056"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0057">
+ <dc:title>Test Case #57</dc:title>
+ <dc:description>hanging @rel creates multiple triples</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-57">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0057"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0058">
+ <dc:title>Test Case #58</dc:title>
+ <dc:description>hanging @rel creates multiple triples, @typeof permutation</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-58">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0058"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0059">
+ <dc:title>Test Case #59</dc:title>
+ <dc:description>multiple hanging @rels with multiple children</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-59">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0059"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0060">
+ <dc:title>Test Case #60</dc:title>
+ <dc:description>UTF-8 conformance</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-60">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0060"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0061">
+ <dc:title>Test Case #61</dc:title>
+ <dc:description>@rel in head using reserved, non-prefixed XHTML value</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-61">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0061"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0062">
+ <dc:title>Test Case #62</dc:title>
+ <dc:description>@rev in head using reserved, non-prefixed XHTML value</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-62">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0062"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0063">
+ <dc:title>Test Case #63</dc:title>
+ <dc:description>@rel in head using reserved XHTML value and empty-prefix CURIE syntax</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-63">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0063"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0064">
+ <dc:title>Test Case #64</dc:title>
+ <dc:description>@about with safe CURIE</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-64">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0064"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0065">
+ <dc:title>Test Case #65</dc:title>
+ <dc:description>@rel with safe CURIE</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-65">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0065"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0066">
+ <dc:title>Test Case #66</dc:title>
+ <dc:description>@about with @typeof in the head</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-66">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0066"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0067">
+ <dc:title>Test Case #67</dc:title>
+ <dc:description>@property in the head</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-67">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0067"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0068">
+ <dc:title>Test Case #68</dc:title>
+ <dc:description>Relative URI in @about</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-68">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0068"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0069">
+ <dc:title>Test Case #69</dc:title>
+ <dc:description>Relative URI in @href</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-69">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0069"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0070">
+ <dc:title>Test Case #70</dc:title>
+ <dc:description>Relative URI in @resource</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-70">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0070"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0071">
+ <dc:title>Test Case #71</dc:title>
+ <dc:description>No explicit @about</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-71">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0071"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0072">
+ <dc:title>Test Case #72</dc:title>
+ <dc:description>Relative URI in @about (with XHTML base in head)</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-72">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0072"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0073">
+ <dc:title>Test Case #73</dc:title>
+ <dc:description>Relative URI in @resource (with XHTML base in head)</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-73">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0073"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0074">
+ <dc:title>Test Case #74</dc:title>
+ <dc:description>Relative URI in @href (with XHTML base in head)</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-74">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0074"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0075">
+ <dc:title>Test Case #75</dc:title>
+ <dc:description>Reserved word 'license' in @rel with no explizit @about</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-75">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0075"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0076">
+ <dc:title>Test Case #76</dc:title>
+ <dc:description>All reserved XHTML @rel values</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-76">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0076"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0077">
+ <dc:title>Test Case #77</dc:title>
+ <dc:description>All reserved XHTML @rev values</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-77">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0077"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0078">
+ <dc:title>Test Case #78</dc:title>
+ <dc:description>Multiple incomplete triples</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-78">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0078"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0079">
+ <dc:title>Test Case #79</dc:title>
+ <dc:description>@resource and @href in completing incomplete triples</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-79">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0079"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0080">
+ <dc:title>Test Case #80</dc:title>
+ <dc:description>@about overrides @resource in incomplete triples</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-80">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0080"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0081">
+ <dc:title>Test Case #81</dc:title>
+ <dc:description>multiple ways of handling incomplete triples (with @rev)</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-81">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0081"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0082">
+ <dc:title>Test Case #82</dc:title>
+ <dc:description>multiple ways of handling incomplete triples (with @rel and @rev)</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-82">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0082"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0083">
+ <dc:title>Test Case #83</dc:title>
+ <dc:description>multiple ways of handling incomplete triples (merged)</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-83">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0083"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0084">
+ <dc:title>Test Case #84</dc:title>
+ <dc:description>multiple ways of handling incomplete triples, this time with both @rel and @rev</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-84">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0084"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0085">
+ <dc:title>Test Case #85</dc:title>
+ <dc:description>@resource and @href in completing incomplete triples</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-85">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0085"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0086">
+ <dc:title>Test Case #86</dc:title>
+ <dc:description>NO triple for a non-reserved @rel value</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-86">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0086"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0087">
+ <dc:title>Test Case #87</dc:title>
+ <dc:description>All reserved XHTML @rel values (with :xxx)</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-87">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0087"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0088">
+ <dc:title>Test Case #88</dc:title>
+ <dc:description>Interpretation of the CURIE "_:"</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-88">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0088"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0089">
+ <dc:title>Test Case #89</dc:title>
+ <dc:description>@src sets a new subject (@typeof)</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-89">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0089"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0090">
+ <dc:title>Test Case #90</dc:title>
+ <dc:description>@src sets a new subject (@rel/@href)</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-90">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0090"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0091">
+ <dc:title>Test Case #91</dc:title>
+ <dc:description>Non-reserved, un-prefixed CURIE in @property</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-91">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0091"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0092">
+ <dc:title>Test Case #92</dc:title>
+ <dc:description>Tests XMLLiteral content with explicit @datatype</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-92">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0092"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0093">
+ <dc:title>Test Case #93</dc:title>
+ <dc:description>Tests XMLLiteral content with explicit @datatype (user-data-typed literal)</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-93">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0093"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0094">
+ <dc:title>Test Case #94</dc:title>
+ <dc:description>Tests XMLLiteral content with explicit @datatype (unusual prefix - bla:)</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-94">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0094"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0099">
+ <dc:title>Test Case #99</dc:title>
+ <dc:description>Preservation of white space in literals</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-99">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0099"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0100">
+ <dc:title>Test Case #100</dc:title>
+ <dc:description>XMLLiteral with explicit namespace</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-100">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0100"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0101">
+ <dc:title>Test Case #101</dc:title>
+ <dc:description>XMLLiteral with explicit namespace and xml:lang</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-101">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0101"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0102">
+ <dc:title>Test Case #102</dc:title>
+ <dc:description>XMLLiteral with explicit namespace and xml:lang; not overwriting existing langs</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-102">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0102"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0103">
+ <dc:title>Test Case #103</dc:title>
+ <dc:description>XMLLiteral with explicit namespace; not overwriting local namespaces</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-103">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0103"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0104">
+ <dc:title>Test Case #104</dc:title>
+ <dc:description>rdf:value</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-104">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0104"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0105">
+ <dc:title>Test Case #105</dc:title>
+ <dc:description>inner @rel neither CURIE nor LinkType</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-105">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0105"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0106">
+ <dc:title>Test Case #106</dc:title>
+ <dc:description>chaining with empty value in inner @rel</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-106">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0106"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0107">
+ <dc:title>Test Case #107</dc:title>
+ <dc:description>no garbage collecting bnodes</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-107">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0107"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0108">
+ <dc:title>Test Case #108</dc:title>
+ <dc:description>plain literal with datatype="" and xml:lang preservation</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-108">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0108"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0109">
+ <dc:title>Test Case #109</dc:title>
+ <dc:description>Tests to ensure @xml:base is ignored</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-109">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0109"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0110">
+ <dc:title>Test Case #110</dc:title>
+ <dc:description>bNode generated even though no nested @about exists</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-110">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0110"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0111">
+ <dc:title>Test Case #111</dc:title>
+ <dc:description>two bNodes generated after three levels of nesting</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-111">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0111"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0112">
+ <dc:title>Test Case #112</dc:title>
+ <dc:description>plain literal with datatype=""</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-112">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0112"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0113">
+ <dc:title>Test Case #113</dc:title>
+ <dc:description>element with @property and no child nodes generates  empty plain literal</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-113">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0113"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0114">
+ <dc:title>Test Case #114</dc:title>
+ <dc:description>Relative URI</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-114">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0114"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0115">
+ <dc:title>Test Case #115</dc:title>
+ <dc:description>XML Entities must be supported by RDFa parser</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-115">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0115"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0116">
+ <dc:title>Test Case #116</dc:title>
+ <dc:description>Reserved word used in @property should not generate triple</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-116">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0116"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0117">
+ <dc:title>Test Case #117</dc:title>
+ <dc:description>Fragment identifiers stripped from BASE</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-117">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0117"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0118">
+ <dc:title>Test Case #118</dc:title>
+ <dc:description>empty string "" is not equivalent to NULL - @about</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-118">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0118"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0119">
+ <dc:title>Test Case #119</dc:title>
+ <dc:description>"[prefix:]" CURIE format is valid</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-119">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0119"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0120">
+ <dc:title>Test Case #120</dc:title>
+ <dc:description>"[:]" CURIE format is valid</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-120">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0120"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0121">
+ <dc:title>Test Case #121</dc:title>
+ <dc:description>"[]" is a valid safe CURIE</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-121">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test0121"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+<earl:TestCase rdf:about="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test1001">
+ <dc:title>Test Case #1001</dc:title>
+ <dc:description>Vevent using @typeof</dc:description>
+</earl:TestCase>
+<earl:Assertion rdf:about="http://rdfa.digitalbazaar.com/rdfa-test-harness#unit-test-assertion-1001">
+ <earl:assertedBy rdf:resource="http://rdfa.digitalbazaar.com/rdfa-test-harness"/>
+ <earl:subject rdf:resource="http://kellogg-assoc.com/distiller/xml?uri="/>
+ <earl:test rdf:resource="http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/Test1001"/>
+ <earl:result rdf:parseType="Resource">
+  <rdf:type rdf:resource="http://www.w3.org/ns/earl#TestResult"/>
+  <earl:outcome rdf:resource="http://www.w3.org/ns/earl#pass"/>
+ </earl:result>
+</earl:Assertion>
+
+</rdf:RDF>
