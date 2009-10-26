@@ -1,3 +1,8 @@
+=== 0.1.1 2009-10-25
+* Added VERSION constant by reading VERSION file from gem root.
+* Fix [] parsing to not return a resource (TC 0121 and 0122).
+* Improve test-case manifest file parsing to extract expectedResults and use in matchers.
+
 === 0.1.0 2009-10-17
 * First gem release, all XHTML1 approved test cases pass at http://rdfa.digitalbazaar.com/test-suite/
 
