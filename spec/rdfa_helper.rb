@@ -16,14 +16,15 @@ module RdfaHelper
     attr_accessor :purpose
     attr_accessor :reviewStatus
     attr_accessor :specificationReference
-    attr_accessor :expected_results
+    attr_accessor :expectedResults
     
     @@test_cases = []
     
     def initialize(statements)
-      expected_results = true
+      self.expectedResults = true
       statements.each do |statement|
         next if statement.subject.is_a?(Redland::BNode)
+        #next unless statement.subject.uri.short_name == "Test0122"
         unless self.about
           self.about = URI.parse(statement.subject.uri.to_s)
           self.name = statement.subject.uri.short_name
@@ -35,6 +36,9 @@ module RdfaHelper
         elsif statement.predicate.uri.short_name == "informationResourceResults"
           self.informationResourceResults = statement.object.uri.to_s.sub!(/^.*xhtml1-testcases/, TEST_DIR)
           self.originalInformationResourceResults = statement.object.uri.to_s
+        elsif statement.predicate.uri.short_name == "expectedResults"
+          self.expectedResults = statement.object.literal.value == "true"
+          #puts "expectedResults = #{statement.object.literal.value}"
         elsif self.respond_to?("#{statement.predicate.uri.short_name}=")
           s = case
           when statement.object.literal?  then statement.object.literal
@@ -47,12 +51,16 @@ module RdfaHelper
       end
     end
     
+    def status
+      reviewStatus.to_s.split("#").last
+    end
+    
     def information
       %w(purpose specificationReference).map {|a| v = self.send(a); "#{a}: #{v}" if v}.compact.join("\n")
     end
     
-    def self.parse_test_cases
-      return unless @@test_cases.empty?
+    def self.test_cases
+      return @@test_cases unless @@test_cases.empty?
       
       manifest = File.read(File.join(TEST_DIR, "rdfa-xhtml1-test-manifest.rdf"))
       rdfxml_parser = Redland::Parser.new
@@ -64,11 +72,9 @@ module RdfaHelper
       
       @@test_cases = test_hash.values.map {|statements| TestCase.new(statements)}.
         compact.
-        select{|t| t.reviewStatus == "http://www.w3.org/2006/03/test-description#approved"}.
+        select{|t| t.status != "rejected"}.
         sort_by{|t| t.about.is_a?(URI) ? t.about.to_s : "zzz"}
     end
-    
-    def self.test_cases; parse_test_cases; @@test_cases; end
   end
 end
 
@@ -104,7 +110,6 @@ class NTriplesParser
   end
   
   def redland_to_native(resource)
-#    puts resource.inspect
     case
     when resource.literal?
       node_type = Redland.librdf_node_get_literal_value_datatype_uri(resource.literal.node)

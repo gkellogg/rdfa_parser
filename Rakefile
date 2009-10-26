@@ -42,7 +42,7 @@ Rake::RDocTask.new do |rdoc|
   if File.exist?('VERSION')
     version = File.read('VERSION')
   else
-    version = ""
+    version = RdfaParser::VERSION
   end
 
   rdoc.rdoc_dir = 'rdoc'

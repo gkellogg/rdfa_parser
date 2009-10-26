@@ -392,8 +392,9 @@ module RdfaParser
         BNode.new(suffix || "")
       elsif curie.to_s.empty?
         @debug << "curie_to_resource_or_bnode #{URIRef.new(subject)}"
-        # Empty curie resolves to current subject
-        URIRef.new(subject)
+        # Empty curie resolves to current subject (No, an empty curie should be ignored)
+#        URIRef.new(subject)
+        nil
       else
         ns = uri_mappings[prefix.to_s]
         raise ParserException, "No namespace mapping for #{prefix}" unless ns

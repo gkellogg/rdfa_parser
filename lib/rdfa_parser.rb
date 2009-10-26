@@ -17,6 +17,7 @@ rescue LoadError
 end
 
 module RdfaParser
+  VERSION = File.read(File.join(File.dirname(__FILE__), "..", "VERSION")).chop  # Version in parent directory
   LINK_TYPES = %w(
     alternate appendix bookmark cite chapter contents copyright first glossary
     help icon index last license meta next p3pv1 prev role section stylesheet subsection

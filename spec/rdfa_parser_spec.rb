@@ -88,15 +88,15 @@ describe "RDFa parser" do
     xml.should include("Manu Sporny")
   end
   
+  def self.test_cases
+    RdfaHelper::TestCase.test_cases
+  end
+
   # W3C Test suite from http://www.w3.org/2006/07/SWD/RDFa/testsuite/
   describe "w3c xhtml1 testcases" do
-    def self.test_cases
-      RdfaHelper::TestCase.test_cases
-    end
-
     test_cases.each do |t|
-      #next unless t.name == "Test0100"
-      specify "test #{t.name}: #{t.title}" do
+      #next unless t.name == "Test0122"
+      specify "#{t.status} test #{t.name}: #{t.title}" do
         rdfa_string = File.read(t.informationResourceInput)
         rdfa_parser = RdfaParser::RdfaParser.new
         rdfa_parser.parse(rdfa_string, t.originalInformationResourceInput)
@@ -107,9 +107,9 @@ describe "RDFa parser" do
           # Check triples, as Rasql doesn't implement UNION
           ntriples = File.read(t.informationResourceResults.sub("sparql", "nt"))
           parser = NTriplesParser.new(ntriples)
-          rdfa_parser.graph.should be_equivalent_graph(parser.graph, t.information)
+          rdfa_parser.graph.should be_equivalent_graph(parser.graph, t)
         else
-          rdfa_parser.graph.should pass_query(query_string, t.information)
+          rdfa_parser.graph.should pass_query(query_string, t)
         end
 
         rdfa_parser.graph.to_rdfxml.should be_valid_xml

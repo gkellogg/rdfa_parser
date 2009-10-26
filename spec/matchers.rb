@@ -18,6 +18,7 @@ module Matchers
       @sorted_actual.length == @sorted_expected.length
     end
     def failure_message_for_should
+      info = @info.respond_to?(:information) ? @info.information : ""
       if @last_line < @sorted_actual.length && @sorted_expected[@last_line]
         "Graph differs at entry #{@last_line}:\nexpected: #{@sorted_expected[@last_line].to_ntriples}\nactual:   #{@sorted_actual[@last_line].to_ntriples}"
       elsif @last_line < @actual.triples.length
@@ -25,7 +26,7 @@ module Matchers
       else
         "Graph entry count differs:\nexpected: #{@sorted_expected.length}\nactual:   #{@sorted_actual.length}"
       end +
-      "\n\n#{@info + "\n" unless @info.empty?}" +
+      "\n\n#{info + "\n" unless info.empty?}" +
       "Unsorted Expected:\n#{@expected.to_ntriples}" +
       "Unsorted Results:\n#{@actual.to_ntriples}"
     end
@@ -44,25 +45,29 @@ module Matchers
     end
     def matches?(actual)
       @actual = actual
+      @expected_results = @info.respond_to?(:expectedResults) ? @info.expectedResults : true
       model = Redland::Model.new
       ntriples_parser = Redland::Parser.ntriples
       ntriples_parser.parse_string_into_model(model, actual.to_ntriples, "http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/")
 
       @results = @query.execute(model)
-      if @expected.match(/(This test should result in a 'NO'|negative test case)/)
-        @results.nil? || (@results.is_boolean? && !@results.get_boolean?)
-      else
+      if @expected_results
         @results.is_boolean? && @results.get_boolean?
+      else
+        @results.nil? || @results.is_boolean? && !@results.get_boolean?
       end
     end
     def failure_message_for_should
-      "#{@info + "\n" unless @info.empty?}" +
+      info = @info.respond_to?(:information) ? @info.information : ""
+      "#{info + "\n" unless info.empty?}" +
       if @results.nil?
         "Query failed to return results"
       elsif !@results.is_boolean?
         "Query returned non-boolean results"
-      else
+      elsif @expected_results
         "Query returned false"
+      else
+        "Query returned true (expected false)"
       end +
       "\n#{@expected}" +
       "\nResults:\n#{@actual.to_ntriples}"
