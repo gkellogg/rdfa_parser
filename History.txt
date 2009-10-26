@@ -1,3 +1,8 @@
+=== 0.1.2
+* Move most test-case logic into rdfa_helper.
+* Separate approved and unreviewed tests.
+* Allow for soft failure of unreviewed tests by catching Spec::Expectations::ExpectationNotMetError.
+
 === 0.1.1 2009-10-25
 * Added VERSION constant by reading VERSION file from gem root.
 * Fix [] parsing to not return a resource (TC 0121 and 0122).

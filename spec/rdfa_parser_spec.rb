@@ -88,31 +88,46 @@ describe "RDFa parser" do
     xml.should include("Manu Sporny")
   end
   
-  def self.test_cases
-    RdfaHelper::TestCase.test_cases
+  def self.test_cases(suite, manifest)
+    RdfaHelper::TestCase.test_cases(suite, manifest)
   end
 
   # W3C Test suite from http://www.w3.org/2006/07/SWD/RDFa/testsuite/
-  describe "w3c xhtml1 testcases" do
-    test_cases.each do |t|
-      #next unless t.name == "Test0122"
-      specify "#{t.status} test #{t.name}: #{t.title}" do
-        rdfa_string = File.read(t.informationResourceInput)
-        rdfa_parser = RdfaParser::RdfaParser.new
-        rdfa_parser.parse(rdfa_string, t.originalInformationResourceInput)
-
-        query_string = t.informationResourceResults ? File.read(t.informationResourceResults) : ""
-
-        if query_string.match(/UNION|OPTIONAL/)
-          # Check triples, as Rasql doesn't implement UNION
-          ntriples = File.read(t.informationResourceResults.sub("sparql", "nt"))
-          parser = NTriplesParser.new(ntriples)
-          rdfa_parser.graph.should be_equivalent_graph(parser.graph, t)
-        else
-          rdfa_parser.graph.should pass_query(query_string, t)
+  {
+    :xhtml => "rdfa-xhtml1-test-manifest.rdf",
+  }.each do |suite, manifest|
+    describe "w3c #{suite} testcases" do
+      describe "that are approved" do
+        test_cases(suite, manifest).each do |t|
+          next unless t.status == "approved"
+          #next unless t.name =~ /0092/
+          #puts t.inspect
+          specify "test #{t.name}: #{t.title}" do
+            t.run_test do |rdfa_string|
+              rdfa_parser = RdfaParser::RdfaParser.new
+              rdfa_parser.parse(rdfa_string, t.informationResourceInput)
+              rdfa_parser
+            end
+          end
         end
-
-        rdfa_parser.graph.to_rdfxml.should be_valid_xml
+      end
+      describe "that are unreviewed" do
+        test_cases(suite, manifest).each do |t|
+          next unless t.status == "unreviewed"
+          #next unless t.name =~ /0092/
+          #puts t.inspect
+          specify "test #{t.name}: #{t.title}" do
+            begin
+              t.run_test do |rdfa_string|
+                rdfa_parser = RdfaParser::RdfaParser.new
+                rdfa_parser.parse(rdfa_string, t.informationResourceInput)
+                rdfa_parser
+              end
+            rescue Spec::Expectations::ExpectationNotMetError => e
+              pending(e.message) {  raise }
+            end
+          end
+        end
       end
     end
   end
