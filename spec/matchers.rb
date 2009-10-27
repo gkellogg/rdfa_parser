@@ -3,6 +3,7 @@ module Matchers
     def initialize(expected, info)
       @expected = expected
       @info = info
+      @diffable = true
     end
     def matches?(actual)
       @actual = actual
@@ -28,7 +29,8 @@ module Matchers
       end +
       "\n\n#{info + "\n" unless info.empty?}" +
       "Unsorted Expected:\n#{@expected.to_ntriples}" +
-      "Unsorted Results:\n#{@actual.to_ntriples}"
+      "Unsorted Results:\n#{@actual.to_ntriples}" +
+      ""
     end
   end
   
