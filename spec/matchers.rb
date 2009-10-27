@@ -28,7 +28,8 @@ module Matchers
       end +
       "\n\n#{info + "\n" unless info.empty?}" +
       "Unsorted Expected:\n#{@expected.to_ntriples}" +
-      "Unsorted Results:\n#{@actual.to_ntriples}"
+      "Unsorted Results:\n#{@actual.to_ntriples}" +
+      "\nDebug:\n#{@info.trace}"
     end
   end
   
@@ -70,7 +71,8 @@ module Matchers
         "Query returned true (expected false)"
       end +
       "\n#{@expected}" +
-      "\nResults:\n#{@actual.to_ntriples}"
+      "\nResults:\n#{@actual.to_ntriples}" +
+      "\nDebug:\n#{@info.trace}"
     end
   end
 

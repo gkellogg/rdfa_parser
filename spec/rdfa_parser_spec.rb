@@ -88,43 +88,37 @@ describe "RDFa parser" do
     xml.should include("Manu Sporny")
   end
   
-  def self.test_cases(suite, manifest)
-    RdfaHelper::TestCase.test_cases(suite, manifest)
+  def self.test_cases(suite)
+    RdfaHelper::TestCase.test_cases(suite)
   end
 
   # W3C Test suite from http://www.w3.org/2006/07/SWD/RDFa/testsuite/
-  {
-    :xhtml => "rdfa-xhtml1-test-manifest.rdf",
-  }.each do |suite, manifest|
+  %w(xhtml).each do |suite|
     describe "w3c #{suite} testcases" do
       describe "that are approved" do
-        test_cases(suite, manifest).each do |t|
+        test_cases(suite).each do |t|
           next unless t.status == "approved"
-          #next unless t.name =~ /0092/
+          next unless t.name =~ /0011/
           #puts t.inspect
-          specify "test #{t.name}: #{t.title}" do
-            t.run_test do |rdfa_string|
-              rdfa_parser = RdfaParser::RdfaParser.new
+          specify "test #{t.name}: #{t.title}#{",  (negative test)" unless t.expectedResults}" do
+            t.run_test do |rdfa_string, rdfa_parser|
               rdfa_parser.parse(rdfa_string, t.informationResourceInput)
-              rdfa_parser
             end
           end
         end
       end
       describe "that are unreviewed" do
-        test_cases(suite, manifest).each do |t|
+        test_cases(suite).each do |t|
           next unless t.status == "unreviewed"
           #next unless t.name =~ /0092/
           #puts t.inspect
-          specify "test #{t.name}: #{t.title}" do
+          specify "test #{t.name}: #{t.title}#{",  (negative test)" unless t.expectedResults}" do
             begin
-              t.run_test do |rdfa_string|
-                rdfa_parser = RdfaParser::RdfaParser.new
+              t.run_test do |rdfa_string, rdfa_parser|
                 rdfa_parser.parse(rdfa_string, t.informationResourceInput)
-                rdfa_parser
               end
-            rescue Spec::Expectations::ExpectationNotMetError => e
-              pending(e.message) {  raise }
+            #rescue Spec::Expectations::ExpectationNotMetError => e
+            #  pending(e.message) {  raise }
             end
           end
         end
