@@ -98,7 +98,7 @@ describe "RDFa parser" do
       describe "that are approved" do
         test_cases(suite).each do |t|
           next unless t.status == "approved"
-          #next unless t.name =~ /0011/
+          #next unless t.name =~ /0131/
           #puts t.inspect
           specify "test #{t.name}: #{t.title}#{",  (negative test)" unless t.expectedResults}" do
             begin

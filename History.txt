@@ -1,5 +1,7 @@
 === 0.1.3
 * Added rdfa-test-suite as sub-module and refactored RDFa tests to use them.
+* Fix but in white-space separated attributes
+* Downcase XHTML reserved words
 
 === 0.1.2
 * Move most test-case logic into rdfa_helper.

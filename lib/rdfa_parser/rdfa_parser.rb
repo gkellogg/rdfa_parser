@@ -389,7 +389,9 @@ module RdfaParser
         if curie.include?(":")
           resource_array << curie_to_resource_or_bnode(curie, uri_mappings, base)
         elsif with_link_types
-          link_type_curie = curie_to_resource_or_bnode(":#{value}", XH_MAPPING, base) if LINK_TYPES.include?(value.to_s)
+          # Reserved words are all mapped to lower case
+          curie = curie.to_s.downcase
+          link_type_curie = curie_to_resource_or_bnode(":#{curie}", XH_MAPPING, base) if LINK_TYPES.include?(curie)
           resource_array << link_type_curie if link_type_curie
         end
       end
