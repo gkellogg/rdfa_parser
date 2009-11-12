@@ -2,6 +2,7 @@
 * Move most test-case logic into rdfa_helper.
 * Separate approved and unreviewed tests.
 * Allow for soft failure of unreviewed tests by catching Spec::Expectations::ExpectationNotMetError.
+* Integrate rdfa-test-suite and create test cases in the same manner. (Causing SPARQL problems with XMLLiterals)
 
 === 0.1.1 2009-10-25
 * Added VERSION constant by reading VERSION file from gem root.

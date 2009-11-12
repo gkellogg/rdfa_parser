@@ -28,7 +28,7 @@ module RdfaParser
       if shortname_valid?(short)
         @short = short
       else
-        raise ParserException, "Invalid shortname '#{short}"
+        raise ParserException, "Invalid shortname '#{short}'"
       end
     end
 

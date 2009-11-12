@@ -70,7 +70,8 @@ module RdfaParser
     # HTML4::
     # HTML5::
     # Options:
-    # profile:: One of _xhtml1_, _html4_, or _html5_ to override intuition
+    # _profile_:: One of _xhtml1_, _html4_, or _html5_ to override intuition
+    # _strict_:: Fail when error detected, otherwise just continue
     # 
     # Raises RdfaParser::RdfaException or subclass
     def parse(stream, base, options = {}, &block) # :yields: triple
@@ -79,8 +80,10 @@ module RdfaParser
       when Nokogiri::XML::Document then stream
       else   Nokogiri::XML.parse(stream, base)
       end
+      
+      @strict = options[:strict]
       @base = base.to_s
-      raise ParserException, "Empty document" if @doc.nil?
+      raise ParserException, "Empty document" if @doc.nil? && @strict
       @callback = block
 
       # If the doc has a default, use that as "html"
@@ -106,6 +109,9 @@ module RdfaParser
         @graph << triple
       end
       triple
+    rescue RdfException => e
+      add_debug(node, "add_triple raised #{e.class}: #{e.message}")
+      raise if @strict
     end
   
     # Parsing an RDFa document (this is *not* the recursive method)
@@ -131,8 +137,13 @@ module RdfaParser
     
       # look for xmlns
       element.namespaces.each do |attr_name,attr_value|
-        abbr, suffix = attr_name.split(":")
-        mappings[suffix] = @graph.namespace(attr_value, suffix) if abbr == "xmlns"
+        begin
+          abbr, suffix = attr_name.split(":")
+          mappings[suffix] = @graph.namespace(attr_value, suffix) if abbr == "xmlns"
+        rescue RdfException => e
+          add_debug(element, "extract_mappings raised #{e.class}: #{e.message}")
+          raise if @strict
+        end
       end
 
       add_debug(element, "mappings: #{mappings.keys.join(", ")}")
@@ -150,7 +161,11 @@ module RdfaParser
 
     # The recursive helper function
     def traverse(element, evaluation_context)
-      raise ParserException, "Can't parse nil element" if element.nil?
+      if element.nil?
+        add_debug(element, "traverse nil element")
+        raise ParserException, "Can't parse nil element" if @strict
+        return nil
+      end
       
       # local variables [5.5 Step 1]
       recurse = true
@@ -313,7 +328,7 @@ module RdfaParser
         elsif children_node_types != [Nokogiri::XML::Text] and (type == nil or type_resource.to_s == XML_LITERAL.to_s)
           # XML Literal
           add_debug(element, "XML Literal: #{element.inner_html}")
-          current_object_literal = Literal.typed(element.inner_html, XML_LITERAL, :language => language, :namespaces => uri_mappings)
+          current_object_literal = Literal.typed(element.children, XML_LITERAL, :language => language, :namespaces => uri_mappings)
           recurse = false
         end
       
@@ -397,7 +412,11 @@ module RdfaParser
         nil
       else
         ns = uri_mappings[prefix.to_s]
-        raise ParserException, "No namespace mapping for #{prefix}" unless ns
+        unless ns
+          add_debug(nil, "curie_to_resource_or_bnode No namespace mapping for #{prefix}")
+          raise ParserException, "No namespace mapping for #{prefix}" if @strict
+          return nil
+        end
         ns + suffix
       end
     end

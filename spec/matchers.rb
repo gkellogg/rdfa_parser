@@ -30,7 +30,7 @@ module Matchers
       "\n\n#{info + "\n" unless info.empty?}" +
       "Unsorted Expected:\n#{@expected.to_ntriples}" +
       "Unsorted Results:\n#{@actual.to_ntriples}" +
-      ""
+      "\nDebug:\n#{@info.trace}"
     end
   end
   
@@ -50,7 +50,7 @@ module Matchers
       @expected_results = @info.respond_to?(:expectedResults) ? @info.expectedResults : true
       model = Redland::Model.new
       ntriples_parser = Redland::Parser.ntriples
-      ntriples_parser.parse_string_into_model(model, actual.to_ntriples, "http://www.w3.org/2006/07/SWD/RDFa/testsuite/xhtml1-testcases/")
+      ntriples_parser.parse_string_into_model(model, actual.to_ntriples, "http://rdfa.digitalbazaar.com/test-suite/test-cases/xhtml1/")
 
       @results = @query.execute(model)
       if @expected_results
@@ -72,7 +72,8 @@ module Matchers
         "Query returned true (expected false)"
       end +
       "\n#{@expected}" +
-      "\nResults:\n#{@actual.to_ntriples}"
+      "\nResults:\n#{@actual.to_ntriples}" +
+      "\nDebug:\n#{@info.trace}"
     end
   end
 
