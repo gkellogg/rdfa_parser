@@ -134,8 +134,9 @@ module RdfaHelper
     end
     
     def triples
+      tcpathre = Regexp.compile('\$TCPATH')
       f = self.name + ".nt"
-      File.read(File.join(NT_DIR, f))
+      File.read(File.join(NT_DIR, f)).gsub(tcpathre, tcpath)
     end
     
     # Run test case, yields input for parser to create triples
@@ -148,7 +149,9 @@ module RdfaHelper
 
       query_string = results
 
-      if query_string.match(/UNION|OPTIONAL/)
+      triples = self.triples rescue nil
+      
+      if (query_string.match(/UNION|OPTIONAL/) || title.match(/XML/)) && triples
         # Check triples, as Rasql doesn't implement UNION
         parser = NTriplesParser.new(triples, tcpath)
         @rdfa_parser.graph.should be_equivalent_graph(parser.graph, self)
