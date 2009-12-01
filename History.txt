@@ -1,3 +1,7 @@
+=== 0.1.4
+* Reduce dependence on HTML namespace in RDFa parser.
+* Add RDFa tests for HTML4 and HTML5
+
 === 0.1.3
 * Added rdfa-test-suite as sub-module and refactored RDFa tests to use them.
 * Fix but in white-space separated attributes

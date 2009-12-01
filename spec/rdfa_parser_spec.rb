@@ -93,12 +93,12 @@ describe "RDFa parser" do
   end
 
   # W3C Test suite from http://www.w3.org/2006/07/SWD/RDFa/testsuite/
-  %w(xhtml).each do |suite|
+  %w(xhtml html4 html5).each do |suite|
     describe "w3c #{suite} testcases" do
       describe "that are approved" do
         test_cases(suite).each do |t|
           next unless t.status == "approved"
-          #next unless t.name =~ /0131/
+          #next unless t.name =~ /017\d/
           #puts t.inspect
           specify "test #{t.name}: #{t.title}#{",  (negative test)" unless t.expectedResults}" do
             begin
@@ -106,11 +106,7 @@ describe "RDFa parser" do
                 rdfa_parser.parse(rdfa_string, t.informationResourceInput)
               end
             rescue Spec::Expectations::ExpectationNotMetError => e
-              if t.title =~ /XML/
-                pending("XML Tests known to not work propery with Rasqal") {  raise }
-              else
-                raise
-              end
+              raise
             end
           end
         end

@@ -11,6 +11,9 @@ module RdfaHelper
     BASE_MANIFEST_URL = "http://rdfa.digitalbazaar.com/test-suite/"
     BASE_TEST_CASE_URL = "#{BASE_MANIFEST_URL}test-cases/"
     
+    HTMLRE = Regexp.new('([0-9]{4,4})\.xhtml')
+    TCPATHRE = Regexp.compile('\$TCPATH')
+    
     attr_accessor :about
     attr_accessor :name
     attr_accessor :contributor
@@ -98,8 +101,6 @@ module RdfaHelper
       end.compact.join("\n")
 
       namespaces.chop!  # Remove trailing newline
-      htmlre = Regexp.new('([0-9]{4,4})\.xhtml')
-      tcpathre = Regexp.compile('\$TCPATH')
       
       case suite
       when "xhtml"
@@ -107,16 +108,16 @@ module RdfaHelper
         %(<?xml version="1.0" encoding="UTF-8"?>\n) +
         %(<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">\n) +
         %(<html xmlns="http://www.w3.org/1999/xhtml" version="XHTML+RDFa 1.0"\n)
-        head + "#{namespaces}>\n#{body.gsub(tcpathre, tcpath)}\n</html>"
+        head + "#{namespaces}>\n#{body.gsub(TCPATHRE, tcpath)}\n</html>"
       when "html4"
         head ="" +
         %(<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">\n) +
         %(<html version="XHTML+RDFa 1.0"\n)
-        head + "#{namespaces}>\n#{body.gsub(tcpathre, tcpath).gsub(htmlre, '\1.html')}\n</html>"
+        head + "#{namespaces}>\n#{body.gsub(TCPATHRE, tcpath).gsub(HTMLRE, '\1.html')}\n</html>"
       when "html5"
         head = "<!DOCTYPE html>\n"
         head += namespaces.empty? ? %(<html version="HTML+RDFa 1.0">) : "<html\n#{namespaces}>"
-        head + "\n#{body.gsub(tcpathre, tcpath).gsub(htmlre, '\1.html')}\n</html>"
+        head + "\n#{body.gsub(TCPATHRE, tcpath).gsub(HTMLRE, '\1.html')}\n</html>"
       else
         nil
       end
@@ -124,19 +125,17 @@ module RdfaHelper
     
     # Read in file, and apply modifications reference either .html or .xhtml
     def results
-      htmlre = Regexp.new('([0-9]{4,4})\.xhtml')
-      tcpathre = Regexp.compile('\$TCPATH')
-
       f = self.name + ".sparql"
-      body = File.read(File.join(TEST_DIR, "tests", f)).gsub(tcpathre, tcpath)
+      body = File.read(File.join(TEST_DIR, "tests", f)).gsub(TCPATHRE, tcpath)
       
-      suite == "xhtml" ? body : body.gsub(htmlre, '\1.html')
+      suite == "xhtml" ? body : body.gsub(HTMLRE, '\1.html')
     end
     
     def triples
-      tcpathre = Regexp.compile('\$TCPATH')
       f = self.name + ".nt"
-      File.read(File.join(NT_DIR, f)).gsub(tcpathre, tcpath)
+       body = File.read(File.join(NT_DIR, f)).gsub(TCPATHRE, tcpath)
+      
+      suite == "xhtml" ? body : body.gsub(HTMLRE, '\1.html')
     end
     
     # Run test case, yields input for parser to create triples

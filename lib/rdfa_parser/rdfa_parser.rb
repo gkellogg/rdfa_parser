@@ -59,7 +59,7 @@ module RdfaParser
       @graph = options[:graph]
     end
   
-    # Parse XHRML+RDFa document from a string or input stream to closure or graph.
+    # Parse XHTML+RDFa document from a string or input stream to closure or graph.
     # _base_ indicates the base URI of the document.
     #
     # Optionally, the stream may be a Nokogiri::HTML::Document or Nokogiri::XML::Document
@@ -117,7 +117,7 @@ module RdfaParser
     # Parsing an RDFa document (this is *not* the recursive method)
     def parse_whole_document(doc, base)
       # find if the document has a base element
-      base_el = doc.xpath('/html:html/html:head/html:base', @namespace.xmlns_hash).first
+      base_el = doc.css('html>head>base').first
       if (base_el)
         base = base_el.attributes['href']
         # Strip any fragment from base

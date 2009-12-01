@@ -8,8 +8,8 @@ RDFa parser written in pure Ruby. Yields each triple, or generate in-memory grap
 
 == FEATURES/PROBLEMS:
 
-* Most, but not all tests pass.
-* Tests performed by comparison to expected NTriples, not based on SPARQL query
+* Fully compliant RDFa 1.0 parser
+* RDFa tests use SPARQL for most tests due to Rasqal limitataions. Other tests compare directly against N-triples
 * Ultimately, this should be merged in with the Reddy gem to become part of a comprehensive Ruby RDF implementation
   * Support libraries (Graph, Triple, and URIRef are used substantially intact, to facilitate a future merger)
 
