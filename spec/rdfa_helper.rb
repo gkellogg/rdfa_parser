@@ -184,7 +184,7 @@ module RdfaHelper
       
       @@test_cases = test_hash.values.map {|statements| TestCase.new(statements, suite)}.
         compact.
-        sort_by{|t| t.about.is_a?(URI) ? t.about.to_s : "zzz"}
+        sort_by{|t| t.name}
     end
   end
 end
