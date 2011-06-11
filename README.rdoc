@@ -4,6 +4,8 @@
 
 == DESCRIPTION:
 
+This Gem deprecated, see rdf-rdfa[http://github.org/gkellogg/rdf-rdfa] gem.
+
 RDFa parser written in pure Ruby. Yields each triple, or generate in-memory graph
 
 == FEATURES/PROBLEMS:

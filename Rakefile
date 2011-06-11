@@ -4,8 +4,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gemspec|
     gemspec.name = "rdfa_parser"
-    gemspec.summary = "RDFa parser written in pure Ruby."
-    gemspec.description = " Yields each triple, or generate in-memory graph"
+    gemspec.summary = "[Deprecated] RDFa parser written in pure Ruby."
+    gemspec.description = "This gem is no longer supported, please see http://rubygems.org/gems/rdf-rdfa"
     gemspec.email = "gregg@kellogg-assoc.com"
     gemspec.homepage = "http://github.com/gkellogg/rdfa_parser"
     gemspec.authors = ["Gregg Kellogg"]
@@ -19,34 +19,4 @@ begin
   Jeweler::GemcutterTasks.new
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
-end
-
-require 'spec/rake/spectask'
-Spec::Rake::SpecTask.new(:spec) do |spec|
-  spec.libs << 'lib' << 'spec'
-  spec.spec_files = FileList['spec/**/*_spec.rb']
-end
-
-Spec::Rake::SpecTask.new(:rcov) do |spec|
-  spec.libs << 'lib' << 'spec'
-  spec.pattern = 'spec/**/*_spec.rb'
-  spec.rcov = true
-end
-
-task :spec => :check_dependencies
-
-task :default => :spec
-
-require 'rake/rdoctask'
-Rake::RDocTask.new do |rdoc|
-  if File.exist?('VERSION')
-    version = File.read('VERSION')
-  else
-    version = RdfaParser::VERSION
-  end
-
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "rdfa_parser #{version}"
-  rdoc.rdoc_files.include('README*', "History.txt")
-  rdoc.rdoc_files.include('lib/**/*.rb')
 end

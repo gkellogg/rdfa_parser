@@ -1,3 +1,6 @@
+=== 0.1.5
+* Gem is now deprecated, see [RDF::RDFa](http://github.org/gkellogg/rdf-rdfa)
+
 === 0.1.4
 * Reduce dependence on HTML namespace in RDFa parser.
 * Add RDFa tests for HTML4 and HTML5

@@ -50,7 +50,9 @@ module RdfaParser
 
     # Create new parser instance. Options:
     # _graph_:: Graph to parse into, otherwie a new RdfaParser::Graph instance is created
+    # @deprecated Please use rdf-rdfa[http://github.org/gkellogg/rdf-rdfa] instead
     def initialize(options = {})
+      warn "[DEPRECATION] `rdfa_parser` gem is deprecated.  Please use rdf-rb gem instead."
       options = {:graph => Graph.new}.merge(options)
       @debug = []
       BNode.reset # Start sequence anew
